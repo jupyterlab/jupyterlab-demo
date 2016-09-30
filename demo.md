@@ -1,5 +1,7 @@
 # JupyterLab Demo
 
+**DON'T TRY THIS AT HOME - LATEST MASTER OF EVERYTHING USED!!**
+
 ## 1) Building blocks of interactive computing
 
 ### Open the building blocks:
@@ -11,7 +13,6 @@
 
 ### Arrange the building blocks in the main area
 
-
 ### Demonstrate left panel plugins:
 
 * File Browser
@@ -19,14 +20,13 @@
 
 ## 2) File handlers
 
-This works!
-
 JupyterLab has a powerful and extensible architecture for handling a wide
 range of file formats:
 
 * Open this file in the Markdown Viewer and edit
 * Browse through CSV and GeoJSON files from 
-  [Urban Data Challenge](https://github.com/swissnexSF/Urban-Data-Challenge).
+  [Urban Data Challenge](https://github.com/swissnexSF/Urban-Data-Challenge)
+* Open an [VegaLite](https://vega.github.io/vega-lite/) JSON file
 
 ## 3) Connecting building blocks
 
@@ -39,10 +39,10 @@ a wide range of different workflows:
 
 ## 4) Third party plugins/extensions
 
-* Everything in JupyterLab is a plugin - even our own code
-  - NPM, webpack, etc.
-* Third party developers can create, package, ship plugins.
-* The GeoJSON file handler is shipped separately as
-  [jupyterlab_geojson](https://github.com/jupyter/jupyterlab_geojson)
-* [Dask JupyterLab extension](https://github.com/dask/dask-labextension)
-  - Matt Rocklin (Dask, Continuum) is here to demo the Dask JupyterLab extension
+* Everything in JupyterLab is a plugin, even our own code
+* Third party developers can create, package, ship plugins
+* Examples:
+  - [ipywidgets](https://github.com/ipython/ipywidgets)
+  - [GeoJSON file handler](https://github.com/jupyter/jupyterlab_geojson)
+  - [Dask JupyterLab extension](https://github.com/dask/dask-labextension)
+  - [Vega/VegaLite JupyterLab extension](https://github.com/ellisonbg/jupyterlab_vega)

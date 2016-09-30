@@ -9,3 +9,5 @@ To install all of the files needed for the demo, run:
 
     make demo
 
+# Demo guide
+
