@@ -1,0 +1,24 @@
+# Create a new environment
+conda create -n demo python=3 notebook
+source activate demo
+
+# Install the environment kernel
+ipython kernel install --name demo --display-name "Demo Python3" --sys-prefix
+
+# Install jupyterlab
+pip install jupyterlab
+jupyter serverextension enable --sys-prefix jupyterlab
+
+# Install the beta ipywidgets
+pip install --pre ipywidgets
+jupyter nbextension enable widgetsnbextension --py --sys-prefix
+
+# Install the jupyterlab widgets plugin
+pip install jupyterlab_widgets
+jupyter labextension install --sys-prefix --py jupyterlab_widgets
+jupyter labextension enable jupyterlab_widgets --py --sys-prefix
+
+
+# Start up either the notebook or lab. Make sure to use the environment kernel in notebooks!
+# jupyter notebook
+# jupyter lab
