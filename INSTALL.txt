@@ -1,20 +1,20 @@
 # Create a new environment
-conda create -n demo python=3 notebook
+conda create -y -n demo python=3 notebook pandas matplotlib scikit-image
 source activate demo
 
 # Install the environment kernel
 ipython kernel install --name demo --display-name "Demo Python3" --sys-prefix
 
 # Install jupyterlab
-pip install jupyterlab
+pip install jupyterlab==0.7.0
 jupyter serverextension enable --sys-prefix jupyterlab
 
 # Install the beta ipywidgets
-pip install --pre ipywidgets
+pip install --pre ipywidgets==2.0.0b1
 jupyter nbextension enable widgetsnbextension --py --sys-prefix
 
 # Install the jupyterlab widgets plugin
-pip install jupyterlab_widgets
+pip install jupyterlab_widgets==0.4.0
 jupyter labextension install --sys-prefix --py jupyterlab_widgets
 jupyter labextension enable jupyterlab_widgets --py --sys-prefix
 
@@ -22,3 +22,24 @@ jupyter labextension enable jupyterlab_widgets --py --sys-prefix
 # Start up either the notebook or lab. Make sure to use the environment kernel in notebooks!
 # jupyter notebook
 # jupyter lab
+
+
+
+# bqplot
+
+pip install bqplot
+jupyter nbextension install --sys-prefix --py bqplot
+jupyter nbextension enable --sys-prefix --py bqplot
+
+
+# pythreejs
+pip install pythreejs==0.2.2
+jupyter nbextension install --sys-prefix --py --symlink pythreejs
+jupyter nbextension enable --sys-prefix --py pythreejs
+jupyter labextension install --sys-prefix --py --symlink pythreejs
+jupyter labextension enable --sys-prefix --py pythreejs
+
+# GeoJSON map viewer
+pip install jupyterlab_geojson==0.2.0
+jupyter labextension install --sys-prefix --py jupyterlab_geojson
+jupyter labextension enable --sys-prefix --py jupyterlab_geojson
