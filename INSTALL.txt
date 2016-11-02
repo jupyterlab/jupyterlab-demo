@@ -10,8 +10,7 @@ pip install jupyterlab==0.7.0
 jupyter serverextension enable --sys-prefix jupyterlab
 
 # Install the beta ipywidgets
-# bump widgetsnbextension to 2.0.0b2 after it is pushed to pypi
-pip install --pre widgetsnbextension==2.0.0b1
+pip install --pre widgetsnbextension==2.0.0b2
 pip install --pre ipywidgets==6.0.0b2
 jupyter nbextension enable widgetsnbextension --py --sys-prefix
 
