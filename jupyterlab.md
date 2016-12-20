@@ -9,8 +9,6 @@ Collaboration between
 * Bloomberg
 * Continuum
 
-**DON'T TRY THIS AT HOME - JUPYERLAB IS EXTREMELY ALPHA!!**
-
 ## 1) Building blocks of interactive computing
 
 ### Demonstrate left panel plugins:
