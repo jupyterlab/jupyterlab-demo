@@ -43,3 +43,14 @@ jupyter nbextension install --sys-prefix --py --symlink pythreejs
 jupyter nbextension enable --sys-prefix --py pythreejs
 jupyter labextension install --sys-prefix --py --symlink pythreejs
 jupyter labextension enable --sys-prefix --py pythreejs
+
+
+# dask
+conda install -c conda-forge -c bokeh dask distributed bokeh
+pip install dask-labextensions
+jupyter labextension install --symlink --py --sys-prefix dask_labextension
+jupyter labextension enable --py --sys-prefix dask_labextension
+
+# graphviz (for dask)
+brew install graphviz
+pip install graphviz # conda install graphviz doesn't seem to work
