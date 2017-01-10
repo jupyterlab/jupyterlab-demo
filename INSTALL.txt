@@ -27,7 +27,9 @@ jupyter labextension enable --sys-prefix --py jupyterlab_geojson
 # Start up either the notebook or lab. Make sure to use the environment kernel in notebooks!
 # jupyter notebook
 # jupyter lab
-
+# NOTE: if you have version 4.3.1 of Jupyter Notebook, you *must* call it as
+# jupyter notebook --NotebookApp.disable_check_xsrf=True
+# or else nothing will work.
 
 # OPTIONAL
 
