@@ -58,3 +58,8 @@ jupyter labextension enable --py --sys-prefix dask_labextension
 # graphviz (for dask)
 brew install graphviz
 pip install graphviz # conda install graphviz doesn't seem to work
+
+
+# To remove the environment
+# source deactivate $DEMO_ENV_NAME
+# conda remove --all -n $DEMO_ENV_NAME
