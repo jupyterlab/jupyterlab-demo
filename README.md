@@ -22,6 +22,8 @@ this branch of altair:
 
 * altair (https://github.com/ellisonbg/altair/tree/jupyterlab)
 
+*Note:* if you have version 4.3.1 of the Jupyter Notebook, when starting `jupyter notebook` or `lab`, you *must* make the call with `--NotebookApp.disable_check_xsrf=True`.  Else nothing will work with no easy to find errors.
+
 # Demo guide
 
 The basic outline of the JupyterLab demo is described in the file `jupyterlab.md`.
