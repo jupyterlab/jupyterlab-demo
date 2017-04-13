@@ -1,20 +1,20 @@
 export DEMO_ENV_NAME=jlabdemo
 
 # Create a new environment
-conda create -y -n $DEMO_ENV_NAME python=3.5 pandas=0.19.2 matplotlib=2.0.0 scikit-image=0.12.3
+conda create -y -n $DEMO_ENV_NAME python=3.5 notebook pandas=0.19.2 matplotlib=2.0.0 scikit-image=0.12.3
 source activate $DEMO_ENV_NAME
 
 # Install the environment kernel
 ipython kernel install --name $DEMO_ENV_NAME --display-name $DEMO_ENV_NAME --sys-prefix
 
 # Install most recent notebook
-conda install -c conda-forge notebook=4.4.1
+conda install -y -c conda-forge notebook=4.4.1
 
 # Install jupyterlab
-conda install -c conda-forge jupyterlab=0.16.2
+conda install -y -c conda-forge jupyterlab=0.16.2
 
 # Install ipywidgets
-conda install -c conda-forge ipywidgets=6.0.0
+conda install -y -c conda-forge ipywidgets=6.0.0
 
 # Install the jupyterlab widgets plugin
 pip install jupyterlab_widgets==0.6.15
