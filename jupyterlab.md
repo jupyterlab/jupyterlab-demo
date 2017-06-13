@@ -4,43 +4,30 @@ JupyterLab: The next generation user interface for Project Jupyter
 
 https://github.com/jupyter/jupyterlab
 
+Collaboration between
 * Project Jupyter
 * Bloomberg
 * Continuum
 
-**DON'T TRY THIS AT HOME - JUPYERLAB IS EXTREMELY ALPHA!!**
-
 ## 1) Building blocks of interactive computing
+
+### Demonstrate left panel plugins:
+
+* File Browser (file operations, including drag and drop)
+* Command Palette (fuzzy searching for 'new')
 
 ### Open the building blocks:
 
 * Notebook
-  - Explore notebooks from demofiles/PythonDataScienceHandbook
-  - Explore notebooks from demofiles/Altair
+  - Image Processing.ipynb
+* Editor
+  - .py, .md examples
 * Terminal
-* File Editor
 * Console
 
 ### Arrange the building blocks in the main area
 
-### Demonstrate left panel plugins:
-
-* File Browser
-  - Drag the `move_this_file.txt` to the `move_it_here` directory
-* Command Palette
-
-## 2) File handlers
-
-JupyterLab has a powerful and extensible architecture for handling a wide
-range of file formats:
-
-* Open this file in the Markdown Viewer and edit
-* Browse through CSV and GeoJSON files from 
-  [Urban Data Challenge](https://github.com/swissnexSF/Urban-Data-Challenge)
-* Open a [VegaLite](https://vega.github.io/vega-lite/) JSON file from the
-  `vegalite` directory
-
-## 3) Connecting the building blocks
+## 2) Connecting the building blocks
 
 The building blocks can be connected to support a wide range of different workflows:
 
@@ -49,12 +36,44 @@ The building blocks can be connected to support a wide range of different workfl
 * Attach a Kernel/Console and run the code by selecting blocks and pressing
   `Shift+Enter`
 
-## 4) Third party plugins/extensions
+## 3) Deconstruct components
 
-* Everything in JupyterLab is a plugin, even our own code
-* Third party developers can create, package, ship plugins
+* Drag out plot from console
+  - bulk written in a few hours
+* Image processing example
+
+
+## 4) File handlers
+
+JupyterLab has a powerful and extensible architecture for handling a wide range of file formats:
+
+* Open image `jupyter.png`
+* Drag to open `jupyterlab.md` in the Markdown Viewer and edit
+* Open `Data.ipynb` to view data
+* Open `iris.csv`
+* Open DC museum GeoJSON file (from [OpenData DC](http://opendata.dc.gov/datasets/2e65fc16edc3481989d2cc17e6f8c533_54)) - -73,40
+* Open `scatter_opacity.json` as a vega plot
+
+## 5) Plugin architecture
+
+The genius of open-source is being able to shape your tools to your heart's content.
+
+Just like Jupyter is built on top of building blocks of the protocol and message spec, *you* can build on this platform for your workflow.
+
+* Everything in JupyterLab is a plugin, even our own code: `extensions.js`
+* Anyone can create, package, ship plugins
+* Plugins can, for example:
+  - add things to command palette, menu
+  - add viewers for documents
+  - expose other controls (e.g., manage a spark cluster?)
+  - provide more capabilities to the system
+
 * Examples:
   - [ipywidgets](https://github.com/ipython/ipywidgets)
   - [GeoJSON file handler](https://github.com/jupyter/jupyterlab_geojson)
   - [Dask JupyterLab extension](https://github.com/dask/dask-labextension)
   - [Vega/VegaLite JupyterLab extension](https://github.com/ellisonbg/jupyterlab_vega)
+  - [Cookie cutter recipe](https://github.com/jupyter/jupyterlab-extension-cookiecutter-ts)
+
+## What will you build?
+

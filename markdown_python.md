@@ -16,7 +16,7 @@ Let's attach a Python 3 Kernel and Console to this markdown file. Then
 we can select lines of code in the markdown file and run them in the 
 console by pressing `Shift+Enter`. Let's do something more complicated:
 
-First import `matplotlib`, `numpy` and `pandas`:
+First import `matplotlib`, `numpy` and `pandas`, and create a data frame:
 
 ```python
 %matplotlib inline
@@ -24,11 +24,6 @@ from matplotlib import pyplot as plt
 from matplotlib import style
 import numpy as np
 import pandas as pd
-```
-
-Now create a small `DataFrame`:
-
-```python
 data = {
     'x': np.random.rand(100),
     'y': np.random.rand(100),
