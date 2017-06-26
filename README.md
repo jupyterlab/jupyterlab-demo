@@ -4,25 +4,41 @@ This repository contains some demonstrations of
 [JupyterLab](https://github.com/jupyter/jupyterlab), the next
 generation user interface of Project Jupyter.
 
-# Installation
+## Installation
 
-To install all of the files needed for the demo, run:
+This JupyterLab demo is based on a conda environment named `jupyterlab-demo`,
+that is defined in the associated `environment.yml` file.
 
-    make demo
+### Create the environment
 
-This demo will need the latest development master of the following
-packages:
+To create a new conda environment with all the dependencies for the demo, run:
 
-* jupyterlab (https://github.com/jupyter/jupyterlab)
-* jupyterlab_geojson (https://github.com/jupyter/jupyterlab_geojson)
-* jupyterlab_vega (https://github.com/altair-viz/jupyterlab_vega)
+```bash
+conda env create -f environment.yml
+```
 
-Additionally, if you want to run Altair in the Jupyter Notebooks, you will need
-this branch of altair:
+### Activate/deactivate the environment
 
-* altair (https://github.com/ellisonbg/altair/tree/jupyterlab)
+To activate the conda environment, run:
 
-*Note:* if you have version 4.3.1 of the Jupyter Notebook, when starting `jupyter notebook` or `lab`, you *must* make the call with `--NotebookApp.disable_check_xsrf=True`.  Else nothing will work with no easy to find errors.
+```bash
+source activate jupyterlab-demo
+```
+
+To deactivate the conda environment, run:
+
+```bash
+source deactivate
+```
+
+### Install demo files
+
+The demo includes files from a number of other repositories. To install these files,
+run:
+
+```bash
+make demo
+```
 
 # Demo guide
 
