@@ -1,5 +1,7 @@
 # JupyterLab Demonstration
 
+[![Build Status](https://travis-ci.org/jupyterlab/jupyterlab-demo.svg?branch=master)](https://travis-ci.org/jupyterlab/jupyterlab-demo)
+
 This repository contains some demonstrations of
 [JupyterLab](https://github.com/jupyter/jupyterlab), the next
 generation user interface of Project Jupyter.
