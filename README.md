@@ -31,7 +31,7 @@ Additionally, we require installation of:
 * [graphviz](http://www.graphviz.org/Download..php)
 * [nodejs version 5.0 or greater](https://nodejs.org/en/)
 
-For users with [Anaconda](https://anaconda.org/), we have a script that creates a conda envrionment, `jlabdemo`, designed for the content of this demo.
+For users with [Anaconda](https://anaconda.org/), we have a script that creates a conda environment, `jlabdemo`, designed for the content of this demo.
 
 To install, call:
 
