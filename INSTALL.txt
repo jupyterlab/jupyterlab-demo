@@ -16,16 +16,16 @@ conda install -c conda-forge nodejs=6.11.0
 # Install jupyterlab
 conda install -y -c conda-forge jupyterlab=0.24.1
 
-
 # Install google-drive
 jupyter labextension install @jupyterlab/google-drive
 jupyter lab clean && jupyter lab build
 
-# OPTIONAL
+# Install ipywidgets
+pip install ipywidgets==7.0.0a4
+jupyter labextension install @jupyterlab/nbwidgets@0.21
 
 # graphviz (for dask)
-brew install graphviz
-pip install graphviz # conda install graphviz doesn't seem to work
+conda install graphviz
 
 
 # To remove the environment
