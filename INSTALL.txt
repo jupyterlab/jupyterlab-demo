@@ -8,58 +8,24 @@ source activate $DEMO_ENV_NAME
 ipython kernel install --name $DEMO_ENV_NAME --display-name $DEMO_ENV_NAME --sys-prefix
 
 # Install most recent notebook
-conda install -y -c conda-forge notebook=4.4.1
+conda install -y -c conda-forge notebook=5.0.0
+
+# Install node
+conda install -c conda-forge nodejs=6.11.0
 
 # Install jupyterlab
-conda install -y -c conda-forge jupyterlab=0.16.2
+conda install -y -c conda-forge jupyterlab=0.24.1
+
+# Install google-drive
+jupyter labextension install @jupyterlab/google-drive
+jupyter lab clean && jupyter lab build
 
 # Install ipywidgets
-conda install -y -c conda-forge ipywidgets=6.0.0
-
-# Install the jupyterlab widgets plugin
-pip install jupyterlab_widgets==0.6.15
-jupyter labextension install --sys-prefix --py jupyterlab_widgets
-jupyter labextension enable jupyterlab_widgets --py --sys-prefix
-
-# GeoJSON map viewer
-pip install jupyterlab_geojson==0.4.0
-jupyter labextension install --sys-prefix --py jupyterlab_geojson
-jupyter labextension enable --sys-prefix --py jupyterlab_geojson
-
-# Start up either the notebook or lab. Make sure to use the environment kernel in notebooks!
-# jupyter notebook
-# jupyter lab
-# NOTE: if you have version 4.3.1 of Jupyter Notebook, you *must* call it as
-# jupyter notebook --NotebookApp.disable_check_xsrf=True
-# or else nothing will work.
-
-# OPTIONAL
-
-# bqplot
-pip install --pre bqplot=0.9.0b10
-jupyter nbextension install --sys-prefix --py bqplot
-jupyter nbextension enable --sys-prefix --py bqplot
-jupyter labextension install --sys-prefix --py bqplot
-jupyter labextension enable --sys-prefix --py bqplot
-
-
-# pythreejs
-pip install pythreejs==0.3.0
-jupyter nbextension install --sys-prefix --py --symlink pythreejs
-jupyter nbextension enable --sys-prefix --py pythreejs
-jupyter labextension install --sys-prefix --py --symlink pythreejs
-jupyter labextension enable --sys-prefix --py pythreejs
-
-
-# dask
-conda install -c conda-forge -c bokeh dask distributed bokeh
-pip install dask-labextensions
-jupyter labextension install --symlink --py --sys-prefix dask_labextension
-jupyter labextension enable --py --sys-prefix dask_labextension
+pip install ipywidgets==7.0.0a4
+jupyter labextension install @jupyterlab/nbwidgets@0.21
 
 # graphviz (for dask)
-brew install graphviz
-pip install graphviz # conda install graphviz doesn't seem to work
+conda install graphviz
 
 
 # To remove the environment
