@@ -10,24 +10,35 @@ generation user interface of Project Jupyter.
 
 To install all of the files needed for the demo, run:
 
-    make demo
+```
+make demo
+```
 
-This demo will need the latest development master of the following
+This demo will need the latest release of the following
 packages:
 
-* jupyterlab (https://github.com/jupyter/jupyterlab)
-* jupyterlab_geojson (https://github.com/jupyter/jupyterlab_geojson)
-* jupyterlab_vega (https://github.com/altair-viz/jupyterlab_vega)
+* [jupyterlab](https://github.com/jupyter/jupyterlab)
+* [jupyterlab ipywidgets](https://github.com/jupyter-widgets/ipywidgets)
+* [jupyterlab google drive](https://github.com/jupyterlab/jupyterlab-google-drive)
+* [jupyter notebook](https://github.com/jupyter/notebook)
+* [matplotlib](https://github.com/matplotlib/matplotlib)
+* [pandas](https://github.com/pandas-dev/pandas)
+* [scikit-image](https://github.com/scikit-image/scikit-image)
+* [graphviz](http://graphviz.readthedocs.io/en/stable/manual.html)
 
-Additionally, if you want to run Altair in the Jupyter Notebooks, you will need
-this branch of altair:
+Additionally, we require installation of:
 
-* altair (https://github.com/ellisonbg/altair/tree/jupyterlab)
+* [graphviz](http://www.graphviz.org/Download..php)
+* [nodejs version 5.0 or greater](https://nodejs.org/en/)
 
-*Note:* if you have version 4.3.1 of the Jupyter Notebook, when starting `jupyter notebook` or `lab`, you *must* make the call with `--NotebookApp.disable_check_xsrf=True`.  Else nothing will work with no easy to find errors.
+For users with [Anaconda](https://anaconda.org/), we have a script that creates a conda envrionment, `jlabdemo`, designed for the content of this demo.
+
+To install, call:
+
+```
+bash INSTALL.txt
+```
 
 # Demo guide
 
 The basic outline of the JupyterLab demo is described in the file `jupyterlab.md`.
-
-A basic description of Altair can be found in the file `altair.md`.
