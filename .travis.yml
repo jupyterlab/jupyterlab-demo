@@ -18,5 +18,5 @@ install:
   # Useful for debugging any issues with conda
   - conda info -a
 script:
-  - bash INSTALL.txt
+  - bash INSTALL.sh
   - make demo
