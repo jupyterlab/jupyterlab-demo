@@ -1,32 +1,18 @@
-export DEMO_ENV_NAME=jlabdemo
+export DEMO_ENV_NAME=jupyterlab-demo
 
 # Create a new environment
-conda create -y -n $DEMO_ENV_NAME python=3.5 notebook pandas=0.19.2 matplotlib=2.0.0 scikit-image=0.12.3
+conda env create -f environment.yml
 source activate $DEMO_ENV_NAME
 
 # Install the environment kernel
 ipython kernel install --name $DEMO_ENV_NAME --display-name $DEMO_ENV_NAME --sys-prefix
-
-# Install most recent notebook
-conda install -y -c conda-forge notebook=5.0.0
-
-# Install node
-conda install -c conda-forge nodejs=6.11.0
-
-# Install jupyterlab
-conda install -y -c conda-forge jupyterlab=0.24.1
 
 # Install google-drive
 jupyter labextension install @jupyterlab/google-drive
 jupyter lab clean && jupyter lab build
 
 # Install ipywidgets
-pip install ipywidgets==7.0.0a4
 jupyter labextension install @jupyterlab/nbwidgets@0.21
-
-# graphviz (for dask)
-conda install graphviz
-
 
 # To remove the environment
 # source deactivate $DEMO_ENV_NAME

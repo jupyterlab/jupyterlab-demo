@@ -1,18 +1,29 @@
-.PHONY: download PythonDataScienceHandbook Urban-Data-Challenge altair altair-examples
+.PHONY: download PythonDataScienceHandbook UrbanDataChallenge \
+	Altair QuanEcon NatureGenetics TensorflowExamples
 .PHONY: demo createfiles
 
 demo: download createfiles
 createfiles: move_this_file move_it_here
-download: demofiles PythonDataScienceHandbook Urban-Data-Challenge altair
+download: demofiles PythonDataScienceHandbook UrbanDataChallenge \
+	Altair QuanEcon NatureGenetics TensorflowExamples
 
 PythonDataScienceHandbook: demofiles
 	cd demofiles && git clone https://github.com/jakevdp/PythonDataScienceHandbook.git
 
-Urban-Data-Challenge: demofiles
+UrbanDataChallenge: demofiles
 	cd demofiles && git clone https://github.com/swissnexSF/Urban-Data-Challenge.git
 
-altair: demofiles
+Altair: demofiles
 	cd demofiles && git clone https://github.com/altair-viz/altair.git
+
+QuanEcon:
+	cd demofiles && git clone https://github.com/QuantEcon/QuantEcon.notebooks.git
+
+NatureGenetics:
+	cd demofiles && git clone https://github.com/theandygross/TCGA.git
+
+TensorflowExamples:
+	cd demofiles && git clone https://github.com/aymericdamien/TensorFlow-Examples.git
 
 move_this_file: demofiles
 	cd demofiles && touch move_this_file.txt
