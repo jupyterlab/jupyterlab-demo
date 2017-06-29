@@ -6,38 +6,40 @@ This repository contains some demonstrations of
 [JupyterLab](https://github.com/jupyter/jupyterlab), the next
 generation user interface of Project Jupyter.
 
-# Installation
+## Installation
 
-To install all of the files needed for the demo, run:
+The requirements for this demo are described in `environment.yml`
 
+For users with [Anaconda](https://anaconda.org/), this JupyterLab uses a conda environment named `jupyterlab-demo`.
+
+### Create the environment
+
+To create the conda environment with all the dependencies and jupyterlab extensions for the demo, run:
+
+```bash
+bash INSTALL.sh
 ```
+
+### Activate/deactivate the environment
+
+To activate the conda environment, run:
+
+```bash
+source activate jupyterlab-demo
+```
+
+To deactivate the conda environment, run:
+
+```bash
+source deactivate
+```
+
+### Additional demo files
+
+The demo includes files from a number of other repositories. To install these files,
+run:
+
 make demo
-```
-
-This demo will need the latest release of the following
-packages:
-
-* [jupyterlab](https://github.com/jupyter/jupyterlab)
-* [jupyterlab ipywidgets](https://github.com/jupyter-widgets/ipywidgets)
-* [jupyterlab google drive](https://github.com/jupyterlab/jupyterlab-google-drive)
-* [jupyter notebook](https://github.com/jupyter/notebook)
-* [matplotlib](https://github.com/matplotlib/matplotlib)
-* [pandas](https://github.com/pandas-dev/pandas)
-* [scikit-image](https://github.com/scikit-image/scikit-image)
-* [graphviz](http://graphviz.readthedocs.io/en/stable/manual.html)
-
-Additionally, we require installation of:
-
-* [graphviz](http://www.graphviz.org/Download..php)
-* [nodejs version 5.0 or greater](https://nodejs.org/en/)
-
-For users with [Anaconda](https://anaconda.org/), we have a script that creates a conda envrionment, `jlabdemo`, designed for the content of this demo.
-
-To install, call:
-
-```
-bash INSTALL.txt
-```
 
 # Demo guide
 
