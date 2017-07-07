@@ -39,7 +39,9 @@ source deactivate
 The demo includes files from a number of other repositories. To install these files,
 run:
 
-make demo
+```bash
+DEMOFILES.sh
+```
 
 # Demo guide
 

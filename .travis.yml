@@ -1,4 +1,4 @@
-language: c
+language: python
 python:
   - "3.6"
 install:
@@ -19,4 +19,4 @@ install:
   - conda info -a
 script:
   - bash INSTALL.sh
-  - make demo
+  - bash DEMOFILES.sh
