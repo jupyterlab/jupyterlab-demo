@@ -4,55 +4,61 @@ JupyterLab: The next generation user interface for Project Jupyter
 
 https://github.com/jupyter/jupyterlab
 
-Collaboration between
+Collaboration between:
+
 * Project Jupyter
 * Bloomberg
 * Continuum
 
 ## 1) Building blocks of interactive computing
 
-### Demonstrate left panel plugins:
+### Start with the launcher
 
-* File Browser (file operations, including drag and drop)
-* Command Palette (fuzzy searching for 'new')
-
-### Open the building blocks:
+Use it to open different activities:
 
 * Notebook
-  - Image Processing.ipynb
-* Editor
-  - .py, .md examples
-* Terminal
 * Console
+* Editor
+* Terminal
 
-### Arrange the building blocks in the main area
+### Notebooks
 
-## 2) Connecting the building blocks
+* Open example notebooks to show that notebooks still work
+* Collapse input/output
+* Drag and drop cells
 
-The building blocks can be connected to support a wide range of different workflows:
+### Demonstrate left panel plugins:
+
+* File Browser (file operations, context menu, including drag and drop)
+* Running
+* Command Palette (fuzzy searching for 'new')
+
+### Markdown example
 
 * Open `markdown_python.md` in the File Editor
-* View the rendered markdown
+* View the rendered markdown, arrange side by side
 * Attach a Kernel/Console and run the code by selecting blocks and pressing
   `Shift+Enter`
 
-## 3) Deconstruct components
+### Arrange the building blocks in the main area
 
-* Drag out plot from console
-  - bulk written in a few hours
-* Image processing example
+The dock panel allows you to arrange the activites into an
+arbitrary layout.
 
+Tabs and single document mode allow you to focus.
 
 ## 4) File handlers
 
 JupyterLab has a powerful and extensible architecture for handling a wide range of file formats:
 
-* Open image `jupyter.png`
-* Drag to open `jupyterlab.md` in the Markdown Viewer and edit
-* Open `Data.ipynb` to view data
-* Open `iris.csv`
-* Open DC museum GeoJSON file (from [OpenData DC](http://opendata.dc.gov/datasets/2e65fc16edc3481989d2cc17e6f8c533_54)) - -73,40
-* Open `scatter_opacity.json` as a vega plot
+* CSV
+  - `TCGA/Extra Data` (small to medium)
+  - `Urban-Data-Challenge/public-transportation/geneva` (large)
+* Images
+  - `data`
+* Vega-Lite
+  - `altair/altair/examples/json/field_spaces.vl.json`
+* Open DC museum GeoJSON file from [OpenData DC](http://opendata.dc.gov/datasets/2e65fc16edc3481989d2cc17e6f8c533_54)
 
 ## 5) Plugin architecture
 
@@ -60,20 +66,14 @@ The genius of open-source is being able to shape your tools to your heart's cont
 
 Just like Jupyter is built on top of building blocks of the protocol and message spec, *you* can build on this platform for your workflow.
 
-* Everything in JupyterLab is a plugin, even our own code: `extensions.js`
+* Everything in JupyterLab is an extension, including everything we have demoed
+* Extensions are just `npm` packages with metadata
 * Anyone can create, package, ship plugins
-* Plugins can, for example:
-  - add things to command palette, menu
-  - add viewers for documents
-  - expose other controls (e.g., manage a spark cluster?)
-  - provide more capabilities to the system
-
-* Examples:
-  - [ipywidgets](https://github.com/ipython/ipywidgets)
-  - [GeoJSON file handler](https://github.com/jupyter/jupyterlab_geojson)
-  - [Dask JupyterLab extension](https://github.com/dask/dask-labextension)
-  - [Vega/VegaLite JupyterLab extension](https://github.com/ellisonbg/jupyterlab_vega)
-  - [Cookie cutter recipe](https://github.com/jupyter/jupyterlab-extension-cookiecutter-ts)
+* Extension can, for example:
+  - Add things to command palette, menu
+  - Add viewers for documents
+  - Expose other controls (e.g., manage a spark cluster?)
+  - Provide more capabilities to the system
 
 ## What will you build?
 
