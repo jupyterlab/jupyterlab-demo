@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 export DEMO_ENV_NAME=jupyterlab-demo
 
 # Create a new environment
@@ -5,15 +7,15 @@ conda env create -f environment.yml
 source activate $DEMO_ENV_NAME
 
 # Currently need prereleases of widgets
-# and bqplot
-pip install bqplot --pre
-pip install ipywidgets --pre
+# and bqplot in yml file
+#pip install bqplot --pre
+#pip install ipywidgets --pre
 
 # Install the environment kernel
 ipython kernel install --name $DEMO_ENV_NAME --display-name $DEMO_ENV_NAME --sys-prefix
 
 # Install google-drive
-jupyter labextension install @jupyterlab/google-drive
+jupyter labextension install @jupyterlab/google-drive@0.3.1
 jupyter lab clean && jupyter lab build
 
 # Install ipywidgets
