@@ -19,4 +19,5 @@ install:
   - conda info -a
 script:
   - bash INSTALL.sh
-  - bash DEMOFILES.sh
+  - source activate jupyterlab-demo
+  - invoke demofiles
