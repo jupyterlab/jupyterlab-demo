@@ -1,4 +1,3 @@
-name: jupyterlab-demo
 channels:
 - conda-forge
 dependencies:

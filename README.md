@@ -12,12 +12,24 @@ The requirements for this demo are described in `environment.yml`
 
 For users with [Anaconda](https://anaconda.org/), this JupyterLab uses a conda environment named `jupyterlab-demo`.
 
+To install the environment and demofiles, we use [pyinvoke](pyinvoke.org). To install pyinvoke with pip call:
+
+```bash
+pip install invoke
+```
+
 ### Create the environment
 
 To create the conda environment with all the dependencies and jupyterlab extensions for the demo, run:
 
 ```bash
-bash INSTALL.sh
+invoke environment
+```
+
+To create the environment and remove previous installation, call:
+
+```bash
+invoke environment --clean
 ```
 
 ### Activate/deactivate the environment
@@ -40,7 +52,20 @@ The demo includes files from a number of other repositories. To install these fi
 run:
 
 ```bash
-DEMOFILES.sh
+invoke demofiles
+```
+
+To remove demofiles and download again all:
+```
+invoke demofiles --clean
+```
+
+### Uninstalling
+
+To uninstall the demofiles and enviornment, call:
+
+```
+invoke clean
 ```
 
 # Demo guide

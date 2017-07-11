@@ -18,6 +18,8 @@ install:
   # Useful for debugging any issues with conda
   - conda info -a
 script:
-  - bash INSTALL.sh
-  - source activate jupyterlab-demo
+  - conda install pip
+  - pip install invoke
+  - invoke environment
   - invoke demofiles
+  - invoke clean
