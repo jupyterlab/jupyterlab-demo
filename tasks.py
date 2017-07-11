@@ -13,17 +13,13 @@ def environment(ctx, clean=False, env_name=env_name):
 	# Create a new environment
 	print('creating environment')
 	ctx.run('conda env create -f environment.yml -n {0!s};\
-		source activate {0!s}'.format(env_name))
-	# Install the environment kernel
-	ctx.run('ipython kernel install --name {0!s}\
-	 --display-name {0!s} --sys-prefix'.format(env_name))
-	#Install google drive
-	ctx.run('jupyter labextension install @jupyterlab/google-drive@0.3.1;\
-		jupyter lab clean && jupyter lab build')
-	#Install ipython widgets and bqplot
-	ctx.run('jupyter labextension install @jupyterlab/nbwidgets@0.21;\
+		source activate {0!s};\
+		ipython kernel install --name {0!s} --display-name {0!s} --sys-prefix;\
+		jupyter labextension install @jupyterlab/google-drive@0.3.1;\
+		jupyter lab clean && jupyter lab build;\
+		jupyter labextension install @jupyterlab/nbwidgets@0.21;\
 		jupyter labextension install @jupyter-widgets/jupyterlab-manager;\
-		jupyter labextension install bqplot-jupyterlab')
+		jupyter labextension install bqplot-jupyterlab'.format(env_name), pty=True)
 
 @task
 def demofiles(ctx, clean=False, demofolder=demofolder):
