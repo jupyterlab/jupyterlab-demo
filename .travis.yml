@@ -1,4 +1,4 @@
-language: c
+language: python
 python:
   - "3.6"
 install:
@@ -18,5 +18,8 @@ install:
   # Useful for debugging any issues with conda
   - conda info -a
 script:
-  - bash INSTALL.sh
-  - make demo
+  - conda install pip
+  - pip install invoke
+  - invoke environment
+  - invoke demofiles
+  - invoke clean
