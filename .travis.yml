@@ -17,9 +17,9 @@ install:
   - conda update -q conda
   # Useful for debugging any issues with conda
   - conda info -a
-script:
   - conda install pip
   - pip install invoke
+script:
   - invoke environment
   - invoke demofiles
   - invoke clean

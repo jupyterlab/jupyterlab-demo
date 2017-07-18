@@ -8,10 +8,10 @@ demofolder = 'demofiles'
 @task
 def environment(ctx, clean=False, env_name=env_name):
 	'''
-	Creates enviornment for demo
+	Creates environment for demo
 	Args:
-	clean: deletes enviornment prior to reinstallation
-	env_name: name of enviornment to install
+	clean: deletes environment prior to reinstallation
+	env_name: name of environment to install
 	'''
 	if clean:
 		print('deleting environment')
@@ -62,9 +62,9 @@ def demofiles(ctx, clean=False, demofolder=demofolder):
 @task
 def clean(ctx, env_name=env_name, demofolder=demofolder):
 	'''
-	Deletes both enviornment and demofolder
+	Deletes both environment and demofolder
 	Args:
-	env_name: name of conda enviornmnet
+	env_name: name of conda environment
 	demofolder: path to folder with demofiles
 	'''
 	ctx.run('source deactivate;\
