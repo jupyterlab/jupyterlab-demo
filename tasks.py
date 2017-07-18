@@ -52,3 +52,22 @@ def clean(ctx, env_name=env_name, demofolder=demofolder):
 	ctx.run('source deactivate;\
 		conda remove --name {0!s} --all;\
 		rm -rf {1!s}'.format(env_name, demofolder))
+
+@task
+def scipy2017(ctx):
+	# TODO: find a public licensed FASTA file, call it all.fasta,
+	# (this is also used in Fasta.ipynb)
+
+	files = {
+		'big.csv': 'demofiles/urban-data-challenge/public-transportation/geneva/schedule-real-time.csv',
+		'smaller.csv': 'demofiles/tcga/extra_data/c2.cp.v3.0.symbols_edit.csv',
+		'vega.vl.json': 'demofiles/altair/altair/examples/json/field_spaces.vl.json',
+		'notebook.ipynb': 'demofiles/pythondatasciencehandbook/notebooks/03.08-aggregation-and-grouping.ipynb',
+		'iris.csv': 'data/iris.csv',
+		'Messier106_NGC4217Feltoti1024.jpg': 'data/Messier106_NGC4217Feltoti1024.jpg',
+		'Museums_in_DC.geojson': 'data/Museums_in_DC.geojson',
+		'scipy2017.md': 'narrative/scipy2017.md'
+	}
+	ctx.run('mkdir -p scipy2017')
+	for dest, source in files.items():
+		ctx.run('cp {} scipy2017/{}'.format(source, dest))
