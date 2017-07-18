@@ -7,6 +7,12 @@ demofolder = 'demofiles'
 
 @task
 def environment(ctx, clean=False, env_name=env_name):
+	'''
+	Creates environment for demo
+	Args:
+	clean: deletes environment prior to reinstallation
+	env_name: name of environment to install
+	'''
 	if clean:
 		print('deleting environment')
 		ctx.run('source deactivate; conda remove -n {0!s} --all'.format(env_name))
@@ -16,16 +22,22 @@ def environment(ctx, clean=False, env_name=env_name):
 	    conda env create -f environment.yml -n {0!s};
 		source activate {0!s};
 		ipython kernel install --name {0!s} --display-name {0!s} --sys-prefix;
-		jupyter labextension install @jupyterlab/google-drive@0.4.0;
-		jupyter labextension install @jupyterlab/geojson-extension@0.8.0;
-		jupyter labextension install @jupyterlab/json-extension@0.8.0;
-		jupyter labextension install @jupyter-widgets/jupyterlab-manager@0.24.1;
-		jupyter labextension install bqplot-jupyterlab@0.4.0;
+		jupyter labextension install @jupyterlab/google-drive@0.4.0 --no-build;
+		jupyter labextension install @jupyterlab/geojson-extension@0.8.0 --no-build;
+		jupyter labextension install @jupyterlab/json-extension@0.8.0 --no-build;
+		jupyter labextension install @jupyter-widgets/jupyterlab-manager@0.24.1 --no-build;
+		jupyter labextension install bqplot-jupyterlab@0.4.0 --no-build;
 		jupyter lab clean && jupyter lab build;
 		""".format(env_name), pty=True)
 
 @task
 def demofiles(ctx, clean=False, demofolder=demofolder):
+	'''
+	Clones demofiles into demofolder
+	Args:
+	clean: deletes demofiles from demofolder prior to installation
+	demofolder: name of demofolder
+	'''
 	print('cleaning demofiles')
 	if clean:
 		ctx.run('rm -rf {}'.format(demofolder))
@@ -49,6 +61,12 @@ def demofiles(ctx, clean=False, demofolder=demofolder):
 
 @task
 def clean(ctx, env_name=env_name, demofolder=demofolder):
+	'''
+	Deletes both environment and demofolder
+	Args:
+	env_name: name of conda environment
+	demofolder: path to folder with demofiles
+	'''
 	ctx.run('source deactivate;\
 		conda remove --name {0!s} --all;\
 		rm -rf {1!s}'.format(env_name, demofolder))
