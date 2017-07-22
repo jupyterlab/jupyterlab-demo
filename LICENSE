@@ -27,3 +27,50 @@ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
 CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+===================
+
+Museums in DC GeoJSON License
+/data/Muesums_in_DC.geojson
+
+Chief Technology Office (OCTO) of the
+Government of the District of Columbia
+
+http://opendata.dc.gov/datasets/2e65fc16edc3481989d2cc17e6f8c533_54
+
+CC BY 4.0
+https://creativecommons.org/licenses/by/4.0/
+===================
+
+Fisher's Irish Dataset
+/data/iris.csv
+
+R. A. Fisher
+
+http://archive.ics.uci.edu/ml/datasets/Iris
+
+CC0 1.0
+Public Domain
+https://creativecommons.org/publicdomain/zero/1.0/
+====================
+
+Hubble Interacting Galaxy AM 0500-620
+/data/1024px-Hubble_Interacting_Galaxy_AM_0500-620_(2008-04-24).jpg
+
+NASA, ESA, the Hubble Heritage (STScI/AURA)-ESA/Hubble Collaboration, and W. Keel (University of Alabama, Tuscaloosa)
+
+http://hubblesite.org/image/2326/news_release/2008-16
+
+http://hubblesite.org/about_us/copyright.php
+====================
+
+Japan Meteroligcal Agency High-resolution Precipitation Nowcasts
+/data/japan_meterological_agency_201707211555.json
+
+Japan Meteroligcal Agency
+
+http://www.jma.go.jp/en/highresorad/
+
+CC BY 4.0
+https://creativecommons.org/licenses/by/4.0/
+http://www.jma.go.jp/jma/en/copyright.html
