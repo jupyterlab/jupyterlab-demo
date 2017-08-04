@@ -19,6 +19,7 @@ install:
   - conda info -a
   - conda install pip
   - pip install invoke
+  - conda install yaml
 script:
   - invoke environment
   - invoke demofiles

@@ -141,6 +141,6 @@ def talk(ctx, talk_name, clean=False):
 		for old_file, new_file in talks[talk_name]['rename'].items():
 			moved_file = os.path.join(talk_name, os.path.basename(old_file))
 			if os.path.isfile(moved_file):
-				os.rename(os.path.basename(old_file), os.path.join(talk_name, new_file))
+				os.rename(moved_file, os.path.join(talk_name, new_file))
 			elif os.path.isfile(old_file):
 				shutil.copy(old_file, os.path.join(talk_name, new_file))

@@ -3,6 +3,8 @@ test_talk:
         - demofiles/TCGA
     files:
         - data/iris.csv
+    rename:
+        iris.csv : iris_renamed.csv
 
 scipy2017:
     files:
