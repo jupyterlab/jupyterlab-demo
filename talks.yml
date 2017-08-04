@@ -1,0 +1,5 @@
+test_talk:
+    folders:
+        - demofiles/TCGA
+    files:
+        - data/iris.csv

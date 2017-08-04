@@ -1,6 +1,9 @@
 from __future__ import print_function
 from invoke import task, run
 import os
+import yaml
+import shutil
+import pdb
 
 env_name = 'jupyterlab-demo'
 demofolder = 'demofiles'
@@ -40,9 +43,9 @@ def demofiles(ctx, clean=False, demofolder=demofolder):
 	'''
 	print('cleaning demofiles')
 	if clean:
-		ctx.run('rm -rf {}'.format(demofolder))
+		shutil.rmtree(demofolder)
 	print('creating demofolder')
-	ctx.run('mkdir {}'.format(demofolder))
+	os.makedirs(demofolder)
 	old_pwd = os.getcwd()
 	os.chdir(demofolder)
 	#list of repos used in demo
@@ -70,5 +73,67 @@ def clean(ctx, env_name=env_name, demofolder=demofolder):
 	demofolder: path to folder with demofiles
 	'''
 	ctx.run('source deactivate;\
-		conda remove --name {0!s} --all;\
-		rm -rf {1!s}'.format(env_name, demofolder))
+		conda remove --name {0!s} --all').format(env_name)
+	shutil.rmtree(demofolder)
+	with open("talks.yml", 'r') as stream:
+		talks = yaml.load(stream)
+	for t in talks:
+		if os.path.exists(t):
+			shutil.rmtree(t)
+
+@task
+def talk(ctx, talk_name, clean=False):
+	'''
+	Reads yaml file talks.yml and
+	moves files and folders specified
+	in yaml file to the a folder
+	matching the name of the talk
+
+	Args:
+	talk_name: name of talk in talks.yml
+
+	Note: yaml file is assumed to be
+	a dict of dicts of lists with the
+	following python format:
+
+	{talk_name:
+		{'folders':
+			['folder0', folder1']
+		'files':
+			['file0', file1']
+		}
+	}
+
+	or in yaml format:
+
+	talk_name:
+		folders:
+			- folder0
+			- folder1
+		files:
+			- file0
+			- file1
+	'''
+	with open("talks.yml", 'r') as stream:
+		talks = yaml.load(stream)
+	if clean:
+		shutil.rmtree(talk_name)
+	if not os.path.exists(talk_name):
+		os.makedirs(talk_name)
+	for copy_type in ['folders', 'files']:
+		if copy_type in talks[talk_name]:
+			for f in talks[talk_name][copy_type]:
+				copied_path = os.path.join(talk_name, os.path.basename(f))
+				if copy_type == 'folders':
+					if not os.path.exists(copied_path):
+						shutil.copytree(f, copied_path)
+					assert os.path.exists(copied_path),\
+					'{} failed to copy into {}'.format(f, talk_name)
+				elif copy_type == 'files':
+					shutil.copy(f, copied_path)
+					assert os.path.isfile(copied_path),\
+					'{} failed to copy into {}'.format(f, talk_name)
+
+
+
+

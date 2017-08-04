@@ -90,3 +90,6 @@ ENV/
 
 # Demo files
 demofiles/
+
+# Talk folders
+test_talk/
