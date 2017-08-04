@@ -133,6 +133,14 @@ def talk(ctx, talk_name, clean=False):
 					shutil.copy(f, copied_path)
 					assert os.path.isfile(copied_path),\
 					'{} failed to copy into {}'.format(f, talk_name)
+	if 'rename' in talks[talk_name]:
+		for old_file, new_file in talks[talk_name]['rename'].items():
+			moved_file = os.path.join(talk_name, os.path.basename(old_file))
+			if os.path.isfile(moved_file):
+				os.rename(os.path.basename(old_file), os.path.join(talk_name, new_file))
+			elif os.path.isfile(old_file):
+				shutil.copy(old_file, os.path.join(talk_name, new_file))
+
 
 
 
