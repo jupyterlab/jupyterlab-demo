@@ -19,9 +19,9 @@ install:
   - conda info -a
   - conda install pip
   - pip install invoke
-  - conda install yaml
+  - conda install pyyaml
 script:
   - invoke environment
   - invoke demofiles
-  - invoke talk -t test_talk
+  - invoke talk -t test_talks
   - invoke clean
