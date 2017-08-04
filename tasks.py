@@ -93,14 +93,16 @@ def talk(ctx, talk_name, clean=False):
 	talk_name: name of talk in talks.yml
 
 	Note: yaml file is assumed to be
-	a dict of dicts of lists with the
-	following python format:
+	a dict of dicts of lists and
+  dict with the following python format:
 
 	{talk_name:
 		{'folders':
 			['folder0', folder1']
 		'files':
 			['file0', file1']
+     'rename':
+      {'oldname': 'newname'}
 		}
 	}
 
@@ -113,6 +115,8 @@ def talk(ctx, talk_name, clean=False):
 		files:
 			- file0
 			- file1
+    rename:
+      oldname: newname
 	'''
 	with open("talks.yml", 'r') as stream:
 		talks = yaml.load(stream)
@@ -140,8 +144,3 @@ def talk(ctx, talk_name, clean=False):
 				os.rename(os.path.basename(old_file), os.path.join(talk_name, new_file))
 			elif os.path.isfile(old_file):
 				shutil.copy(old_file, os.path.join(talk_name, new_file))
-
-
-
-
-
