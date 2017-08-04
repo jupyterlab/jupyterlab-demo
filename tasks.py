@@ -73,7 +73,7 @@ def clean(ctx, env_name=env_name, demofolder=demofolder):
 	demofolder: path to folder with demofiles
 	'''
 	ctx.run('source deactivate;\
-		conda remove --name {0!s} --all').format(env_name)
+		conda remove --name {} --all'.format(env_name))
 	shutil.rmtree(demofolder)
 	with open("talks.yml", 'r') as stream:
 		talks = yaml.load(stream)
