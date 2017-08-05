@@ -45,7 +45,8 @@ def demofiles(ctx, clean=False, demofolder=demofolder):
 	if clean:
 		shutil.rmtree(demofolder)
 	print('creating demofolder')
-	os.makedirs(demofolder)
+	if not os.path.exists(demofolder):
+		os.makedirs(demofolder)
 	old_pwd = os.getcwd()
 	os.chdir(demofolder)
 	#list of repos used in demo
@@ -59,7 +60,8 @@ def demofiles(ctx, clean=False, demofolder=demofolder):
 		'aymericdamien/TensorFlow-Examples'
 	]
 	for repo in reponames:
-		ctx.run('git clone https://github.com/{}.git'.format(repo))
+		if not os.path.isdir(repo.split('/')[1]):
+			ctx.run('git clone https://github.com/{}.git'.format(repo))
 		assert os.path.isdir(repo.split('/')[1]), '{} failed download'.format(repo)
 	#This empty file and empty folder are for showing drag and drop in jupyterlab
 	ctx.run('touch move_this_file.txt; mkdir move_it_here')
@@ -96,7 +98,7 @@ def talk(ctx, talk_name, clean=False):
 	a dict of dicts of lists and
   dict with the following python format:
 
-	{talk_name:
+	{'talk_name':
 		{'folders':
 			['folder0', folder1']
 		'files':
@@ -115,8 +117,8 @@ def talk(ctx, talk_name, clean=False):
 		files:
 			- file0
 			- file1
-    rename:
-      oldname: newname
+		rename:
+      		oldname: newname
 	'''
 	with open("talks.yml", 'r') as stream:
 		talks = yaml.load(stream)
@@ -127,6 +129,7 @@ def talk(ctx, talk_name, clean=False):
 	for copy_type in ['folders', 'files']:
 		if copy_type in talks[talk_name]:
 			for f in talks[talk_name][copy_type]:
+				if (f.split('/')[0] == demofolder) and not os.path.exists(demofolder)
 				copied_path = os.path.join(talk_name, os.path.basename(f))
 				if copy_type == 'folders':
 					if not os.path.exists(copied_path):
