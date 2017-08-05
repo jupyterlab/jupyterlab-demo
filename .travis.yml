@@ -23,5 +23,6 @@ install:
 script:
   - invoke environment
   - invoke demofiles
+  - rm -rf demofiles
   - invoke talk -t test_talk
   - invoke clean

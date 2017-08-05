@@ -129,7 +129,9 @@ def talk(ctx, talk_name, clean=False):
 	for copy_type in ['folders', 'files']:
 		if copy_type in talks[talk_name]:
 			for f in talks[talk_name][copy_type]:
-				if (f.split('/')[0] == demofolder) and not os.path.exists(demofolder)
+				if (f.split('/')[0] == demofolder) and not os.path.exists(demofolder):
+					demofiles(ctx)
+					os.chdir('..')
 				copied_path = os.path.join(talk_name, os.path.basename(f))
 				if copy_type == 'folders':
 					if not os.path.exists(copied_path):
