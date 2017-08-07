@@ -17,6 +17,7 @@ dependencies:
 - sympy=1.0
 - tensorflow=1.1.0
 - nodejs=6.11.0=0
+- pyyaml
 - pip:
   - bqplot==0.10.0a2
   - invoke==0.19.0

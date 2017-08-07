@@ -1,0 +1,19 @@
+test_talk:
+    folders:
+        - demofiles/TCGA
+    files:
+        - data/iris.csv
+    rename:
+        iris.csv : iris_renamed.csv
+
+scipy2017:
+    files:
+        - data/iris.csv
+        - data/1024px-Hubble_Interacting_Galaxy_AM_0500-620_(2008-04-24).jpg
+        - data/Museums_in_DC.geojson
+        - narrative/scipy2017.md
+    rename:
+        demofiles/urban-data-challenge/public-transportation/geneva/schedule-real-time.csv: big.csv
+        demofiles/tcga/extra_data/c2.cp.v3.0.symbols_edit.csv: smaller.csv
+        demofiles/altair/altair/examples/json/field_spaces.vl.json: vega.vl.json
+        demofiles/pythondatasciencehandbook/notebooks/03.08-aggregation-and-grouping.ipynb: notebook.ipynb

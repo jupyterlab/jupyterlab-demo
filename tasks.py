@@ -1,6 +1,9 @@
 from __future__ import print_function
 from invoke import task, run
 import os
+import yaml
+import shutil
+import pdb
 
 env_name = 'jupyterlab-demo'
 demofolder = 'demofiles'
@@ -40,9 +43,10 @@ def demofiles(ctx, clean=False, demofolder=demofolder):
 	'''
 	print('cleaning demofiles')
 	if clean:
-		ctx.run('rm -rf {}'.format(demofolder))
+		shutil.rmtree(demofolder)
 	print('creating demofolder')
-	ctx.run('mkdir {}'.format(demofolder))
+	if not os.path.exists(demofolder):
+		os.makedirs(demofolder)
 	old_pwd = os.getcwd()
 	os.chdir(demofolder)
 	#list of repos used in demo
@@ -56,7 +60,8 @@ def demofiles(ctx, clean=False, demofolder=demofolder):
 		'aymericdamien/TensorFlow-Examples'
 	]
 	for repo in reponames:
-		ctx.run('git clone https://github.com/{}.git'.format(repo))
+		if not os.path.isdir(repo.split('/')[1]):
+			ctx.run('git clone https://github.com/{}.git'.format(repo))
 		assert os.path.isdir(repo.split('/')[1]), '{} failed download'.format(repo)
 	#This empty file and empty folder are for showing drag and drop in jupyterlab
 	ctx.run('touch move_this_file.txt; mkdir move_it_here')
@@ -70,24 +75,77 @@ def clean(ctx, env_name=env_name, demofolder=demofolder):
 	demofolder: path to folder with demofiles
 	'''
 	ctx.run('source deactivate;\
-		conda remove --name {0!s} --all;\
-		rm -rf {1!s}'.format(env_name, demofolder))
+		conda remove --name {} --all'.format(env_name))
+	shutil.rmtree(demofolder)
+	with open("talks.yml", 'r') as stream:
+		talks = yaml.load(stream)
+	for t in talks:
+		if os.path.exists(t):
+			shutil.rmtree(t)
 
 @task
-def scipy2017(ctx):
-	# TODO: find a public licensed FASTA file, call it all.fasta,
-	# (this is also used in Fasta.ipynb)
+def talk(ctx, talk_name, clean=False):
+	'''
+	Reads yaml file talks.yml and
+	moves files and folders specified
+	in yaml file to the a folder
+	matching the name of the talk
 
-	files = {
-		'big.csv': 'demofiles/urban-data-challenge/public-transportation/geneva/schedule-real-time.csv',
-		'smaller.csv': 'demofiles/tcga/extra_data/c2.cp.v3.0.symbols_edit.csv',
-		'vega.vl.json': 'demofiles/altair/altair/examples/json/field_spaces.vl.json',
-		'notebook.ipynb': 'demofiles/pythondatasciencehandbook/notebooks/03.08-aggregation-and-grouping.ipynb',
-		'iris.csv': 'data/iris.csv',
-		'Messier106_NGC4217Feltoti1024.jpg': 'data/Messier106_NGC4217Feltoti1024.jpg',
-		'Museums_in_DC.geojson': 'data/Museums_in_DC.geojson',
-		'scipy2017.md': 'narrative/scipy2017.md'
+	Args:
+	talk_name: name of talk in talks.yml
+
+	Note: yaml file is assumed to be
+	a dict of dicts of lists and
+  dict with the following python format:
+
+	{'talk_name':
+		{'folders':
+			['folder0', folder1']
+		'files':
+			['file0', file1']
+     'rename':
+      {'oldname': 'newname'}
+		}
 	}
-	ctx.run('mkdir -p scipy2017')
-	for dest, source in files.items():
-		ctx.run('cp {} scipy2017/{}'.format(source, dest))
+
+	or in yaml format:
+
+	talk_name:
+		folders:
+			- folder0
+			- folder1
+		files:
+			- file0
+			- file1
+		rename:
+      		oldname: newname
+	'''
+	with open("talks.yml", 'r') as stream:
+		talks = yaml.load(stream)
+	if clean:
+		shutil.rmtree(talk_name)
+	if not os.path.exists(talk_name):
+		os.makedirs(talk_name)
+	for copy_type in ['folders', 'files']:
+		if copy_type in talks[talk_name]:
+			for f in talks[talk_name][copy_type]:
+				if (f.split('/')[0] == demofolder) and not os.path.exists(demofolder):
+					demofiles(ctx)
+					os.chdir('..')
+				copied_path = os.path.join(talk_name, os.path.basename(f))
+				if copy_type == 'folders':
+					if not os.path.exists(copied_path):
+						shutil.copytree(f, copied_path)
+					assert os.path.exists(copied_path),\
+					'{} failed to copy into {}'.format(f, talk_name)
+				elif copy_type == 'files':
+					shutil.copy(f, copied_path)
+					assert os.path.isfile(copied_path),\
+					'{} failed to copy into {}'.format(f, talk_name)
+	if 'rename' in talks[talk_name]:
+		for old_file, new_file in talks[talk_name]['rename'].items():
+			moved_file = os.path.join(talk_name, os.path.basename(old_file))
+			if os.path.isfile(moved_file):
+				os.rename(moved_file, os.path.join(talk_name, new_file))
+			elif os.path.isfile(old_file):
+				shutil.copy(old_file, os.path.join(talk_name, new_file))
