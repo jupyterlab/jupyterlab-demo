@@ -1,5 +1,5 @@
 from __future__ import print_function
-from invoke import task, Config
+from invoke import task, Collection
 import os
 import yaml
 import shutil
@@ -183,7 +183,8 @@ def talk(ctx, talk_name, clean=False):
 
 
 # Configure cross-platform settings.
-Config.from_data({
+ns = Collection(environment, demofiles, clean, scipy2017)
+ns.configure({
 	'run': {
 		'shell': which('bash') if os.name != 'nt' else which('cmd'),
 		'pty': False if os.name == 'nt' else True
