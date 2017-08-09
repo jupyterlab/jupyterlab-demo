@@ -51,8 +51,10 @@ def demofiles(ctx, clean=False, demofolder=demofolder):
 	if clean:
 		shutil.rmtree(demofolder)
 	print('creating demofolder')
+
 	if not os.path.exists(demofolder):
 		os.makedirs(demofolder)
+
 	old_pwd = os.getcwd()
 	os.chdir(demofolder)
 	#list of repos used in demo
@@ -90,7 +92,7 @@ def clean(ctx, env_name=env_name, demofolder=demofolder):
 			shutil.rmtree(t)
 
 	if os.path.exists(demofolder)
-		shutil.rmtree(demofolder)
+	shutil.rmtree(demofolder)
 
 
 @task
