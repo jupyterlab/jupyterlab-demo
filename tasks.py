@@ -50,6 +50,7 @@ def demofiles(ctx, clean=False, demofolder=demofolder):
 	print('cleaning demofiles')
 	if clean:
 		shutil.rmtree(demofolder)
+
 	print('creating demofolder')
 
 	if not os.path.exists(demofolder):
@@ -92,7 +93,7 @@ def clean(ctx, env_name=env_name, demofolder=demofolder):
 			shutil.rmtree(t)
 
 	if os.path.exists(demofolder):
-		shutil.rmtree(demofolder)
+		shutil.rmtree(demofolder, True)
 
 
 @task
@@ -116,6 +117,7 @@ def talk(ctx, talk_name, clean=False):
       {'oldname': 'newname'}
 		}
 	}
+<<<<<<< HEAD
 	or in yaml format:
 	talk_name:
 		folders:
