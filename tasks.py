@@ -62,12 +62,11 @@ def demofiles(ctx, clean=False, demofolder=demofolder):
 	'''
 	print('cleaning demofiles')
 	if clean:
-		shutil.rmtree(demofolder)
+		rmdir(demofolder)
 
 	if not os.path.exists(demofolder):
 		os.makedirs(demofolder)
 
-	rmdir(demofolder)
 	print('creating demofolder')
 	os.makedirs(demofolder)
 	old_pwd = os.getcwd()
@@ -89,6 +88,7 @@ def demofiles(ctx, clean=False, demofolder=demofolder):
 	#This empty file and empty folder are for showing drag and drop in jupyterlab
 	ctx.run('touch move_this_file.txt; mkdir move_it_here')
 
+
 @task
 def clean(ctx, env_name=env_name, demofolder=demofolder):
 	'''
@@ -103,16 +103,9 @@ def clean(ctx, env_name=env_name, demofolder=demofolder):
 	with open("talks.yml", 'r') as stream:
 		talks = yaml.load(stream)
 	for t in talks:
-		if os.path.exists(t):
-			shutil.rmtree(t)
+		rmdir(t)
 
-	if os.path.exists(demofolder):
-		shutil.rmtree(demofolder, True)
-
-	ctx.run('{0!s} {1!s}' % (rmdir, demofolder))
-
-
-	rmdir(ctx, demofolder)
+	rmdir(demofolder)
 
 
 @task
@@ -136,10 +129,6 @@ def talk(ctx, talk_name, clean=False):
       {'oldname': 'newname'}
 		}
 	}
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 	or in yaml format:
 	talk_name:
 		folders:
@@ -154,7 +143,7 @@ def talk(ctx, talk_name, clean=False):
 	with open("talks.yml", 'r') as stream:
 		talks = yaml.load(stream)
 	if clean:
-		shutil.rmtree(talk_name)
+		rmdir(talk_name)
 	if not os.path.exists(talk_name):
 		os.makedirs(talk_name)
 	for copy_type in ['folders', 'files']:
