@@ -84,15 +84,15 @@ def clean(ctx, env_name=env_name, demofolder=demofolder):
 	'''
 	cmd = '{0!s} deactivate && conda remove --name {1!s} --all'
 	ctx.run(cmd.format(source, env_name))
-	shutil.rmtree(demofolder)
+
 	with open("talks.yml", 'r') as stream:
 		talks = yaml.load(stream)
 	for t in talks:
 		if os.path.exists(t):
 			shutil.rmtree(t)
 
-	if os.path.exists(demofolder)
-	shutil.rmtree(demofolder)
+	if os.path.exists(demofolder):
+		shutil.rmtree(demofolder)
 
 
 @task
