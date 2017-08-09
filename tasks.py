@@ -64,11 +64,9 @@ def demofiles(ctx, clean=False, demofolder=demofolder):
 	if clean:
 		rmdir(demofolder)
 
+	print('creating demofolder')
 	if not os.path.exists(demofolder):
 		os.makedirs(demofolder)
-
-	print('creating demofolder')
-	os.makedirs(demofolder)
 	old_pwd = os.getcwd()
 	os.chdir(demofolder)
 	#list of repos used in demo
