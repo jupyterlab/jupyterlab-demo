@@ -4,6 +4,8 @@ import os
 import yaml
 import shutil
 import pdb
+from subprocess import check_output
+
 from shutil import which
 import shutil
 
@@ -12,12 +14,12 @@ demofolder = 'demofiles'
 source = '' if os.name == 'nt' else 'source'
 
 
-def rmdir(ctx, dirname):
+def rmdir(dirname):
 	"""Safely remove a directory, cross-platform
 	"""
 	cmd = 'rmdir /S /Q' if os.name == 'nt' else 'rm -rf'
 	if os.path.exists(dirname):
-		ctx.run('{0!s} {1!s}'.format(cmd, dirname))
+		check_output('{0!s} {1!s}'.format(cmd, dirname))
 
 
 @task
@@ -59,13 +61,12 @@ def demofiles(ctx, clean=False, demofolder=demofolder):
 	if clean:
 		shutil.rmtree(demofolder)
 
-
-	rmdir(ctx, demofolder)
-
-
 	if not os.path.exists(demofolder):
 		os.makedirs(demofolder)
 
+	rmdir(demofolder)
+	print('creating demofolder')
+	os.makedirs(demofolder)
 	old_pwd = os.getcwd()
 	os.chdir(demofolder)
 	#list of repos used in demo
@@ -132,6 +133,7 @@ def talk(ctx, talk_name, clean=False):
       {'oldname': 'newname'}
 		}
 	}
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
