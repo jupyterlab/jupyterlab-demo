@@ -17,10 +17,12 @@ source = '' if os.name == 'nt' else 'source'
 def rmdir(dirname):
 	"""Safely remove a directory, cross-platform
 	"""
-	cmd = 'rmdir /S /Q' if os.name == 'nt' else 'rm -rf'
-	if os.path.exists(dirname):
-		check_output('{0!s} {1!s}'.format(cmd, dirname))
-
+	if not os.path.exists(dirname):
+		return
+	if os.name == 'nt':
+		check_output('rmdir {0!s} /S /Q'.format(dirname))
+	else:
+		check_output('rm -rf {0!s}'.format(dirname))
 
 @task
 def environment(ctx, clean=False, env_name=env_name):
