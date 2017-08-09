@@ -20,9 +20,10 @@ def rmdir(dirname):
 	if not os.path.exists(dirname):
 		return
 	if os.name == 'nt':
-		check_output('rmdir {0!s} /S /Q'.format(dirname))
+		check_output('rmdir {0!s} /S /Q'.format(dirname), shell=True)
 	else:
-		check_output('rm -rf {0!s}'.format(dirname))
+		check_output(['rm', '-rf', dirname])
+
 
 @task
 def environment(ctx, clean=False, env_name=env_name):
