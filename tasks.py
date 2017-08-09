@@ -172,7 +172,7 @@ def talk(ctx, talk_name, clean=False):
 
 
 # Configure cross-platform settings.
-ns = Collection(environment, demofiles, clean, scipy2017)
+ns = Collection(environment, demofiles, clean, talk)
 ns.configure({
 	'run': {
 		'shell': which('bash') if os.name != 'nt' else which('cmd'),
