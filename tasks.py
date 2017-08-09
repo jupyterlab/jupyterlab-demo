@@ -10,6 +10,7 @@ import shutil
 env_name = 'jupyterlab-demo'
 demofolder = 'demofiles'
 source = '' if os.name == 'nt' else 'source'
+rmdir = 'rmdir /S /Q' if os.name == 'nt' else 'rm -rf'
 
 
 @task
@@ -95,6 +96,9 @@ def clean(ctx, env_name=env_name, demofolder=demofolder):
 	if os.path.exists(demofolder):
 		shutil.rmtree(demofolder, True)
 
+	ctx.run('{0!s} {1!s}' % (rmdir, demofolder))
+
+
 
 @task
 def talk(ctx, talk_name, clean=False):
@@ -117,6 +121,7 @@ def talk(ctx, talk_name, clean=False):
       {'oldname': 'newname'}
 		}
 	}
+<<<<<<< HEAD
 <<<<<<< HEAD
 	or in yaml format:
 	talk_name:
