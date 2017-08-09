@@ -49,6 +49,7 @@ def demofiles(ctx, clean=False, demofolder=demofolder):
 	demofolder: name of demofolder
 	'''
 	print('cleaning demofiles')
+
 	if clean:
 		shutil.rmtree(demofolder)
 
