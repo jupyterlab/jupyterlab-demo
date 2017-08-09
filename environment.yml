@@ -15,7 +15,6 @@ dependencies:
 - scikit-learn=0.18.1
 - seaborn=0.7.1
 - sympy=1.0
-- tensorflow=1.1.0
 - nodejs=6.11.0=0
 - pyyaml
 - pip:

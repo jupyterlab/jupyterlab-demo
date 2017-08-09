@@ -1,12 +1,29 @@
 from __future__ import print_function
-from invoke import task, run
+from invoke import task, Collection
 import os
 import yaml
 import shutil
 import pdb
+from subprocess import check_output
+
+from shutil import which
+import shutil
 
 env_name = 'jupyterlab-demo'
 demofolder = 'demofiles'
+source = '' if os.name == 'nt' else 'source'
+
+
+def rmdir(dirname):
+	"""Safely remove a directory, cross-platform
+	"""
+	if not os.path.exists(dirname):
+		return
+	if os.name == 'nt':
+		check_output('rmdir {0!s} /S /Q'.format(dirname), shell=True)
+	else:
+		check_output(['rm', '-rf', dirname])
+
 
 @task
 def environment(ctx, clean=False, env_name=env_name):
@@ -18,20 +35,22 @@ def environment(ctx, clean=False, env_name=env_name):
 	'''
 	if clean:
 		print('deleting environment')
-		ctx.run('source deactivate; conda remove -n {0!s} --all'.format(env_name))
+		ctx.run('{0!s} deactivate; conda remove -n {1!s} --all'.format(source, env_name))
 	# Create a new environment
 	print('creating environment {0!s}'.format(env_name))
+	activate = 'activate' if os.name == 'nt' else 'source activate'
+	#
 	ctx.run("""
-	    conda env create -f environment.yml -n {0!s};
-		source activate {0!s};
-		ipython kernel install --name {0!s} --display-name {0!s} --sys-prefix;
-		jupyter labextension install @jupyterlab/google-drive@0.4.0 --no-build;
-		jupyter labextension install @jupyterlab/geojson-extension@0.8.0 --no-build;
-		jupyter labextension install @jupyterlab/json-extension@0.8.0 --no-build;
-		jupyter labextension install @jupyter-widgets/jupyterlab-manager@0.24.1 --no-build;
-		jupyter labextension install bqplot-jupyterlab@0.4.0 --no-build;
-		jupyter lab clean && jupyter lab build;
-		""".format(env_name), pty=True)
+		conda env create -f environment.yml -n {0!s} &&
+		{1!s} {0!s} &&
+		ipython kernel install --name {0!s} --display-name {0!s} --sys-prefix &&
+		jupyter labextension install @jupyterlab/google-drive@0.4.0 --no-build &&
+		jupyter labextension install @jupyterlab/geojson-extension@0.8.0 --no-build &&
+		jupyter labextension install @jupyterlab/json-extension@0.8.0 --no-build &&
+		jupyter labextension install @jupyter-widgets/jupyterlab-manager@0.24.1 --no-build &&
+		jupyter labextension install bqplot-jupyterlab@0.4.0 --no-build &&
+		jupyter lab clean && jupyter lab build
+		""".format(env_name, activate).strip().replace('\n', ''))
 
 @task
 def demofiles(ctx, clean=False, demofolder=demofolder):
@@ -43,7 +62,8 @@ def demofiles(ctx, clean=False, demofolder=demofolder):
 	'''
 	print('cleaning demofiles')
 	if clean:
-		shutil.rmtree(demofolder)
+		rmdir(demofolder)
+
 	print('creating demofolder')
 	if not os.path.exists(demofolder):
 		os.makedirs(demofolder)
@@ -66,6 +86,7 @@ def demofiles(ctx, clean=False, demofolder=demofolder):
 	#This empty file and empty folder are for showing drag and drop in jupyterlab
 	ctx.run('touch move_this_file.txt; mkdir move_it_here')
 
+
 @task
 def clean(ctx, env_name=env_name, demofolder=demofolder):
 	'''
@@ -74,14 +95,16 @@ def clean(ctx, env_name=env_name, demofolder=demofolder):
 	env_name: name of conda environment
 	demofolder: path to folder with demofiles
 	'''
-	ctx.run('source deactivate;\
-		conda remove --name {} --all'.format(env_name))
-	shutil.rmtree(demofolder)
+	cmd = '{0!s} deactivate && conda remove --name {1!s} --all'
+	ctx.run(cmd.format(source, env_name))
+
 	with open("talks.yml", 'r') as stream:
 		talks = yaml.load(stream)
 	for t in talks:
-		if os.path.exists(t):
-			shutil.rmtree(t)
+		rmdir(t)
+
+	rmdir(demofolder)
+
 
 @task
 def talk(ctx, talk_name, clean=False):
@@ -90,14 +113,11 @@ def talk(ctx, talk_name, clean=False):
 	moves files and folders specified
 	in yaml file to the a folder
 	matching the name of the talk
-
 	Args:
 	talk_name: name of talk in talks.yml
-
 	Note: yaml file is assumed to be
 	a dict of dicts of lists and
   dict with the following python format:
-
 	{'talk_name':
 		{'folders':
 			['folder0', folder1']
@@ -107,9 +127,7 @@ def talk(ctx, talk_name, clean=False):
       {'oldname': 'newname'}
 		}
 	}
-
 	or in yaml format:
-
 	talk_name:
 		folders:
 			- folder0
@@ -123,7 +141,7 @@ def talk(ctx, talk_name, clean=False):
 	with open("talks.yml", 'r') as stream:
 		talks = yaml.load(stream)
 	if clean:
-		shutil.rmtree(talk_name)
+		rmdir(talk_name)
 	if not os.path.exists(talk_name):
 		os.makedirs(talk_name)
 	for copy_type in ['folders', 'files']:
@@ -149,3 +167,13 @@ def talk(ctx, talk_name, clean=False):
 				os.rename(moved_file, os.path.join(talk_name, new_file))
 			elif os.path.isfile(old_file):
 				shutil.copy(old_file, os.path.join(talk_name, new_file))
+
+
+# Configure cross-platform settings.
+ns = Collection(environment, demofiles, clean, talk)
+ns.configure({
+	'run': {
+		'shell': which('bash') if os.name != 'nt' else which('cmd'),
+		'pty': False if os.name == 'nt' else True
+	}
+})
