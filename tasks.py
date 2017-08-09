@@ -10,7 +10,14 @@ import shutil
 env_name = 'jupyterlab-demo'
 demofolder = 'demofiles'
 source = '' if os.name == 'nt' else 'source'
-rmdir = 'rmdir /S /Q' if os.name == 'nt' else 'rm -rf'
+
+
+def rmdir(ctx, dirname):
+	"""Safely remove a directory, cross-platform
+	"""
+	cmd = 'rmdir /S /Q' if os.name == 'nt' else 'rm -rf'
+	if os.path.exists(dirname):
+		ctx.run('{0!s} {1!s}'.format(cmd, dirname))
 
 
 @task
@@ -49,11 +56,12 @@ def demofiles(ctx, clean=False, demofolder=demofolder):
 	demofolder: name of demofolder
 	'''
 	print('cleaning demofiles')
-
 	if clean:
 		shutil.rmtree(demofolder)
 
-	print('creating demofolder')
+
+	rmdir(ctx, demofolder)
+
 
 	if not os.path.exists(demofolder):
 		os.makedirs(demofolder)
@@ -100,6 +108,8 @@ def clean(ctx, env_name=env_name, demofolder=demofolder):
 	ctx.run('{0!s} {1!s}' % (rmdir, demofolder))
 
 
+	rmdir(ctx, demofolder)
+
 
 @task
 def talk(ctx, talk_name, clean=False):
@@ -122,6 +132,7 @@ def talk(ctx, talk_name, clean=False):
       {'oldname': 'newname'}
 		}
 	}
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 	or in yaml format:
