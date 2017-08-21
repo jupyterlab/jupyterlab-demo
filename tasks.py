@@ -106,12 +106,12 @@ def clean(ctx, env_name=env_name, demofolder=demofolder):
 
 
 @task 
-def r(ctx): 
+def r(ctx, env_name=env_name): 
 	'''
 	Installs the r kernel and associated libs. 
 	'''
-	cmd = '{0!s} activate && conda install r-irkernel r-ggplot2'
-	ctx.run(cmd.format(source))
+	cmd = '{0!s} activate {1!s} && conda install r-irkernel r-ggplot2'
+	ctx.run(cmd.format(source, env_name))
 
 
 @task
