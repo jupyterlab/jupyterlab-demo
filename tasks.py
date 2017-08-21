@@ -110,7 +110,7 @@ def r(ctx):
 	'''
 	Installs the r kernel and associated libs. 
 	'''
-	cmd = '{0!s} activate && conda install r-irkernel r-ggplot'
+	cmd = '{0!s} activate && conda install r-irkernel r-ggplot2'
 	ctx.run(cmd.format(source))
 
 
