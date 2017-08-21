@@ -26,3 +26,5 @@ script:
   - rm -rf demofiles
   - invoke talk -t test_talk
   - invoke clean
+  - invoke r
+  - jupyter nbconvert --to notebook --execute --ExecutePreprocessor.kernel_name=ir --ExecutePreprocessor.timeout=60 --stdout notebooks/R.ipynb > /dev/null;
