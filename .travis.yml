@@ -22,9 +22,11 @@ install:
   - conda install pyyaml
 script:
   - invoke environment
+  - jupyter nbconvert --to notebook --execute  --ExecutePreprocessor.timeout=60 --stdout notebooks/Data.ipynb > /dev/null;
+  - jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=60 --stdout notebooks/Fasta.ipynb > /dev/null;
   - invoke demofiles
   - rm -rf demofiles
   - invoke talk -t test_talk
   - invoke clean
   - invoke r
-  - jupyter nbconvert --to notebook --execute --ExecutePreprocessor.kernel_name=ir --ExecutePreprocessor.timeout=60 --stdout notebooks/R.ipynb > /dev/null;
+  - jupyter nbconvert --to notebook --execute  --ExecutePreprocessor.timeout=60 --stdout notebooks/R.ipynb > /dev/null;
