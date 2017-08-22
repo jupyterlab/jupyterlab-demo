@@ -60,6 +60,19 @@ To remove demofiles and download again all:
 invoke demofiles --clean
 ```
 
+### R Language support
+
+To add R language support, run:
+
+```bash
+invoke r
+```
+
+### Julia Language support
+
+To add Julia language support follow the instructions [here](https://github.com/JuliaLang/IJulia.jl#installation).
+
+
 ### Uninstalling
 
 To uninstall the demofiles and enviornment, call:

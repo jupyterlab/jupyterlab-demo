@@ -105,6 +105,15 @@ def clean(ctx, env_name=env_name, demofolder=demofolder):
 	rmdir(demofolder)
 
 
+@task 
+def r(ctx, env_name=env_name): 
+	'''
+	Installs the r kernel and associated libs. 
+	'''
+	cmd = '{0!s} activate {1!s} && conda install r-irkernel r-ggplot2'
+	ctx.run(cmd.format(source, env_name))
+
+
 @task
 def talk(ctx, talk_name, clean=False):
 	'''
@@ -169,7 +178,7 @@ def talk(ctx, talk_name, clean=False):
 
 
 # Configure cross-platform settings.
-ns = Collection(environment, demofiles, clean, talk)
+ns = Collection(environment, demofiles, r, clean, talk)
 ns.configure({
 	'run': {
 		'shell': which('bash') if os.name != 'nt' else which('cmd'),
