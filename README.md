@@ -12,7 +12,7 @@ The requirements for this demo are described in `environment.yml`
 
 For users with [Anaconda](https://anaconda.org/), this JupyterLab uses a conda environment named `jupyterlab-demo`.
 
-To install the environment and demofiles, we use [pyinvoke](pyinvoke.org). To install pyinvoke with pip call:
+To install the environment and demofiles, we use [pyinvoke](http://pyinvoke.org). To install pyinvoke with pip call:
 
 ```bash
 pip install invoke
