@@ -43,11 +43,13 @@ def environment(ctx, clean=False, env_name=env_name):
 		conda env create -f environment.yml -n {0!s} &&
 		{1!s} {0!s} &&
 		ipython kernel install --name {0!s} --display-name {0!s} --sys-prefix &&
-		jupyter labextension install @jupyterlab/google-drive@0.4.0 --no-build &&
-		jupyter labextension install @jupyterlab/geojson-extension@0.8.0 --no-build &&
-		jupyter labextension install @jupyterlab/json-extension@0.8.0 --no-build &&
-		jupyter labextension install @jupyter-widgets/jupyterlab-manager@0.24.1 --no-build &&
-		jupyter labextension install bqplot-jupyterlab@0.4.0 --no-build &&
+		jupyter labextension install @jupyterlab/google-drive --no-build &&
+		jupyter labextension install @jupyterlab/github --no-build &&
+		jupyter labextension install @jupyterlab/fasta-extension --no-build &&
+		jupyter labextension install @jupyterlab/geojson-extension --no-build &&
+		jupyter labextension install @jupyterlab/plotly-extension --no-build &&
+		jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build &&
+		jupyter labextension install bqplot-jupyterlab --no-build &&
 		jupyter lab clean && jupyter lab build
 		""".format(env_name, activate).strip().replace('\n', ''))
 

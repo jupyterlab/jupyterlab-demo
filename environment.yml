@@ -2,8 +2,8 @@ channels:
 - conda-forge
 dependencies:
 - altair=1.2.0
-- jupyterlab=0.25.2
-- jupyterlab_launcher=0.2.9
+- jupyterlab=0.30.5
+- jupyterlab_launcher=0.6.0
 - dask=0.15.0
 - ipython=6.1.0
 - matplotlib=2.0.2
@@ -25,7 +25,6 @@ dependencies:
   - ipywidgets==7.0.0a11
   - jupyter-client==5.1.0
   - jupyter-core==4.3.0
-  - jupyterlab-launcher==0.2.9
   - prompt-toolkit==1.0.14
   - traittypes==0.0.6
   - widgetsnbextension==3.0.0a14
