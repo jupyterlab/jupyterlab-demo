@@ -83,7 +83,8 @@ def demofiles(ctx, clean=False, demofolder=demofolder):
 		'altair-viz/altair',
 		'QuantEcon/QuantEcon.notebooks',
 		'theandygross/TCGA',
-		'aymericdamien/TensorFlow-Examples'
+		'aymericdamien/TensorFlow-Examples',
+		'bloomberg/bqplot'
 	]
 	for repo in reponames:
 		if not os.path.isdir(repo.split('/')[1]):

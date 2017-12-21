@@ -30,5 +30,5 @@ script:
   - source deactivate
   - invoke demofiles
   - rm -rf demofiles
-  - invoke talk -t test_talk
+  - invoke talk -t demo
   - invoke clean
