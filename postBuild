@@ -1,3 +1,3 @@
-invoke build --env_name root
-invoke demofiles --env_name root
-invoke r --env_name root
+invoke build --env-name=root
+invoke demofiles --env-name=root
+invoke r --env-name=root
