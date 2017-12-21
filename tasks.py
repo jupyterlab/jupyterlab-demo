@@ -36,9 +36,7 @@ def environment(ctx, clean=False, env_name=env_name):
 		ctx.run('{0!s} deactivate; conda remove -n {1!s} --all'.format(source, env_name))
 	# Create a new environment
 	print('creating environment {0!s}'.format(env_name))
-	activate = 'activate' if os.name == 'nt' else 'source activate'
-	#
-	ctx.run("conda env create -f environment.yml -n {0!s} && {1!s} {0!s}".format(env_name, activate))
+	ctx.run("conda env create -f environment.yml -n {0!s}".format(env_name))
 
 	build(ctx, env_name=env_name)
 
@@ -46,6 +44,7 @@ def environment(ctx, clean=False, env_name=env_name):
 @task
 def build(ctx, env_name=env_name):
 	ctx.run("""
+		{0!s} activate {1!s}
 		ipython kernel install --name {0!s} --display-name {0!s} --sys-prefix &&
 		jupyter labextension install @jupyterlab/google-drive --no-build &&
 		jupyter labextension install @jupyterlab/github --no-build &&
@@ -55,7 +54,7 @@ def build(ctx, env_name=env_name):
 		jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build &&
 		jupyter labextension install bqplot-jupyterlab --no-build &&
 		jupyter lab clean && jupyter lab build
-		""".format(env_name).strip().replace('\n', ''))
+		""".format(source, env_name).strip().replace('\n', ''))
 
 
 @task
