@@ -29,4 +29,4 @@ demo:
         demofiles/tcga/extra_data/c2.cp.v3.0.symbols_edit.csv: smaller.csv
         demofiles/altair/altair/examples/json/field_spaces.vl.json: vega.vl.json
         demofiles/pythondatasciencehandbook/notebooks/03.08-aggregation-and-grouping.ipynb: notebook.ipynb
-        "demofiles/bqplot/examples/Applications/Wealth of Nations.ipynb": "Wealth of Nations.ipynb"
+        "demofiles/bqplot/examples/Basic Plotting/Basic Plotting.ipynb": bqplot.ipynb
