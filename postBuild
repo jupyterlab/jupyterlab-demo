@@ -1,3 +1,4 @@
+conda update -q conda
 invoke environment
 invoke demofiles
 invoke r
