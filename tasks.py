@@ -46,6 +46,8 @@ def build(ctx, env_name=env_name):
 	ctx.run("""
 		{0!s} activate {1!s} &&
 		ipython kernel install --name {1!s} --display-name {1!s} --sys-prefix &&
+		pip install git+https://github.com/jupyterlab/jupyterlab-github.git@v0.3.1 &&
+		jupyter serverextension enable --sys-prefix --py jupyterlab_github &&
 		jupyter labextension install @jupyterlab/github --no-build &&
 		jupyter labextension install @jupyterlab/fasta-extension --no-build &&
 		jupyter labextension install @jupyterlab/geojson-extension --no-build &&
