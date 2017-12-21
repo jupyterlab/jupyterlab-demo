@@ -44,7 +44,7 @@ def environment(ctx, clean=False, env_name=env_name):
 @task
 def build(ctx, env_name=env_name):
 	ctx.run("""
-		{0!s} activate {1!s}
+		{0!s} activate {1!s} &&
 		ipython kernel install --name {0!s} --display-name {0!s} --sys-prefix &&
 		jupyter labextension install @jupyterlab/github --no-build &&
 		jupyter labextension install @jupyterlab/fasta-extension --no-build &&
