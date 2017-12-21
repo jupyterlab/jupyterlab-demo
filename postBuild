@@ -1,4 +1,3 @@
-conda update -q conda
-invoke environment
-invoke demofiles
-invoke r
+invoke build --env-name root
+invoke demofiles --env-name root
+invoke r --env-name root

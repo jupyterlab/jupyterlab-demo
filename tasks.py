@@ -2,7 +2,6 @@ from __future__ import print_function
 from invoke import task, Collection
 import os
 import yaml
-import pdb
 from subprocess import check_output
 
 from shutil import which
@@ -39,9 +38,14 @@ def environment(ctx, clean=False, env_name=env_name):
 	print('creating environment {0!s}'.format(env_name))
 	activate = 'activate' if os.name == 'nt' else 'source activate'
 	#
+	ctx.run("conda env create -f environment.yml -n {0!s} && {1!s} {0!s}".format(env_name, activate))
+
+	build(ctx, env_name=env_name)
+
+
+@task
+def build(ctx, env_name=env_name):
 	ctx.run("""
-		conda env create -f environment.yml -n {0!s} &&
-		{1!s} {0!s} &&
 		ipython kernel install --name {0!s} --display-name {0!s} --sys-prefix &&
 		jupyter labextension install @jupyterlab/google-drive --no-build &&
 		jupyter labextension install @jupyterlab/github --no-build &&
@@ -51,7 +55,8 @@ def environment(ctx, clean=False, env_name=env_name):
 		jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build &&
 		jupyter labextension install bqplot-jupyterlab --no-build &&
 		jupyter lab clean && jupyter lab build
-		""".format(env_name, activate).strip().replace('\n', ''))
+		""".format(env_name).strip().replace('\n', ''))
+
 
 @task
 def demofiles(ctx, clean=False, demofolder=demofolder):
@@ -107,10 +112,10 @@ def clean(ctx, env_name=env_name, demofolder=demofolder):
 	rmdir(demofolder)
 
 
-@task 
-def r(ctx, env_name=env_name): 
+@task
+def r(ctx, env_name=env_name):
 	'''
-	Installs the r kernel and associated libs. 
+	Installs the r kernel and associated libs.
 	'''
 	cmd = '{0!s} activate {1!s} && conda install r-irkernel r-ggplot2'
 	ctx.run(cmd.format(source, env_name))
