@@ -24,9 +24,16 @@ demo:
         - data/1024px-Hubble_Interacting_Galaxy_AM_0500-620_(2008-04-24).jpg
         - data/Museums_in_DC.geojson
         - narrative/jupyterlab.md
+        - narrative/markdown_python.md
+    folders:
+        - "demofiles/TCGA/Extra Data"
+        - demofiles/Urban-Data-Challend/public-transportation/geneva
     rename:
         demofiles/urban-data-challenge/public-transportation/geneva/schedule-real-time.csv: big.csv
         demofiles/tcga/extra_data/c2.cp.v3.0.symbols_edit.csv: smaller.csv
-        demofiles/altair/altair/examples/json/field_spaces.vl.json: vega.vl.json
-        demofiles/pythondatasciencehandbook/notebooks/03.08-aggregation-and-grouping.ipynb: notebook.ipynb
+        demofiles/altair/altair/v1/examples/json/field_spaces.vl.json: vega.vl.json
+        demofiles/pythondatasciencehandbook/notebooks/03.03-Operations-in-Pandas.ipynb: notebook.ipynb
         "demofiles/bqplot/examples/Basic Plotting/Basic Plotting.ipynb": bqplot.ipynb
+        "1024px-Hubble_Interacting_Galaxy_AM_0500-620_(2008-04-24).png": hubble.png
+        "Extra Data": "TCGA Data"
+        "geneva": "Urban Data Challenge"

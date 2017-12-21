@@ -8,7 +8,6 @@ Collaboration between:
 
 * Project Jupyter
 * Bloomberg
-* Continuum
 
 ## 1) Building blocks of interactive computing
 
@@ -52,13 +51,15 @@ Tabs and single document mode allow you to focus.
 JupyterLab has a powerful and extensible architecture for handling a wide range of file formats:
 
 * CSV
-  - `TCGA/Extra Data` (small to medium)
-  - `Urban-Data-Challenge/public-transportation/geneva` (large)
+  - `iris.csv` (small)
+  - `TCGA Data` (small to medium)
+  - Urban Data Challenge: `big.csv`
 * Images
-  - `data`
+  - `hubble.png`
 * Vega-Lite
-  - `altair/altair/examples/json/field_spaces.vl.json`
-* Open DC museum GeoJSON file from [OpenData DC](http://opendata.dc.gov/datasets/2e65fc16edc3481989d2cc17e6f8c533_54)
+  - `vega.vl.json`
+* Open DC museum GeoJSON file from [OpenData DC](http://opendata.dc.gov/datasets/2e65fc16edc3481989d2cc17e6f8c533_54): `Museums_in_DC.geojson`
+* Notebook demonstrating bqplot widgets: `bqplot.ipynb`
 
 ## 5) Plugin architecture
 
