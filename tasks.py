@@ -185,7 +185,7 @@ def talk(ctx, talk_name, clean=False):
 
 
 # Configure cross-platform settings.
-ns = Collection(environment, demofiles, r, clean, talk)
+ns = Collection(environment, build, demofiles, r, clean, talk)
 ns.configure({
 	'run': {
 		'shell': which('bash') if os.name != 'nt' else which('cmd'),
