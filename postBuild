@@ -30,12 +30,10 @@ echo "push!(Libdl.DL_LOAD_PATH, \"$CONDA_DIR/lib\")" >> $HOME/juliarc.jl && \
 # taking effect properly on the .local folder in the jovyan home dir.
 julia -e 'Pkg.init()' && \
     julia -e 'Pkg.update()' && \
-    julia -e 'Pkg.add("HDF5")' && \
     julia -e 'Pkg.add("Gadfly")' && \
     julia -e 'Pkg.add("RDatasets")' && \
     julia -e 'Pkg.add("IJulia")' && \
     # Precompile Julia packages \
-    julia -e 'using HDF5' && \
     julia -e 'using Gadfly' && \
     julia -e 'using RDatasets' && \
     julia -e 'using IJulia' && \
