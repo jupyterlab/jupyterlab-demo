@@ -1,10 +1,11 @@
 set -ex
 
 # Set up r kernel
-mkdir -p $HOME/R/library
-echo 'R_LIBS_USER="$HOME/R/library"' > $HOME/.Renviron
-R -e "install.packages(c('repr', 'IRdisplay', 'evaluate', 'crayon', 'pbdZMQ', 'devtools', 'uuid', 'digest'), lib='$HOME/R/library', repos='http://cran.us.r-project.org')"
-R -e "devtools::install_github('IRkernel/IRkernel', lib='$HOME/R/library')"
+R_USER_LIB = $HOME/R/library
+mkdir -p $R_USER_LIB
+echo 'R_LIBS_USER="$R_USER_LIB"' > $HOME/.Renviron
+R -e "install.packages(c('repr', 'IRdisplay', 'evaluate', 'crayon', 'pbdZMQ', 'devtools', 'uuid', 'digest'), lib='$R_USER_LIB', repos='http://cran.us.r-project.org')"
+R -e "devtools::install_github('IRkernel/IRkernel', lib='$R_USER_LIB')"
 
 conda install nbconvert
 jupyter nbconvert --to notebook --execute  --ExecutePreprocessor.timeout=60 --stdout notebooks/R.ipynb > /dev/null;
