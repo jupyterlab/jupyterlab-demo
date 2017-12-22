@@ -23,15 +23,19 @@ demo:
         - data/iris.csv
         - data/1024px-Hubble_Interacting_Galaxy_AM_0500-620_(2008-04-24).jpg
         - data/Museums_in_DC.geojson
+        - data/japan_meterological_agency_201707211555.json
+        - data/zika_assembled_genomes.fasta
+        - slides/jupyterlab-slides.pdf
         - narrative/jupyterlab.md
         - narrative/markdown_python.md
     folders:
         demofiles/TCGA/Extra_Data: TCGA_Data
         demofiles/Urban-Data-Challenge/public-transportation/geneva: Urban_Data_Challenge
+        notebooks: notebooks
     rename:
         demofiles/urban-data-challenge/public-transportation/geneva/schedule-real-time.csv: big.csv
         demofiles/tcga/extra_data/c2.cp.v3.0.symbols_edit.csv: smaller.csv
         demofiles/altair/altair/v1/examples/json/field_spaces.vl.json: vega.vl.json
-        demofiles/pythondatasciencehandbook/notebooks/03.03-Operations-in-Pandas.ipynb: notebook.ipynb
-        "demofiles/bqplot/examples/Basic Plotting/Basic Plotting.ipynb": bqplot.ipynb
+        demofiles/PythonDataScienceHandbook/notebooks/03.08-Aggregation-and-Grouping.ipynb: notebooks/pandas.ipynb
+        "demofiles/bqplot/examples/Basic Plotting/Basic Plotting.ipynb": notebooks/bqplot.ipynb
         "1024px-Hubble_Interacting_Galaxy_AM_0500-620_(2008-04-24).jpg": hubble.jpg

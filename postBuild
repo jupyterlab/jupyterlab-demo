@@ -3,3 +3,7 @@ invoke build --env-name=root
 invoke demofiles
 invoke talk -t demo
 rm -rf demofiles
+rm -rf data
+rm -rf notebooks
+rm -rf narrative
+rm -rf slides
