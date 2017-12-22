@@ -1,4 +1,5 @@
-conda install -c conda-forge r-essentials
+conda install -c conda-forge r-irkernel
+conda install -c conda-forge r-ggplot
 invoke build --env-name=root
 invoke demofiles
 invoke talk -t demo
