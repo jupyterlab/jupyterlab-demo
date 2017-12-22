@@ -1,1 +1,2 @@
 r-base
+r-cran-ggplot2
