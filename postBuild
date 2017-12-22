@@ -1,5 +1,5 @@
 conda install -c conda-forge r-irkernel
-conda install -c conda-forge r-ggplot
+conda install -c conda-forge r-ggplot2
 invoke build --env-name=root
 invoke demofiles
 invoke talk -t demo
@@ -8,3 +8,4 @@ rm -rf data
 rm -rf notebooks
 rm -rf narrative
 rm -rf slides
+jupyter lab clean
