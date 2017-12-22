@@ -1,8 +1,10 @@
 set -ex
 
 # Set up r kernel
-R -e "install.packages(c('repr', 'IRdisplay', 'evaluate', 'crayon', 'pbdZMQ', 'devtools', 'uuid', 'digest'), lib=~/RPackages)"
-R -e "devtools::install_github('IRkernel/IRkernel',lib=~/RPackages)"
+mkdir $HOME/RPackages
+echo ".libPaths('$HOME/RPackages')" > $HOME/.Rprofile
+R -e "install.packages(c('repr', 'IRdisplay', 'evaluate', 'crayon', 'pbdZMQ', 'devtools', 'uuid', 'digest'))"
+R -e "devtools::install_github('IRkernel/IRkernel')"
 
 invoke build --env-name=root
 invoke demofiles
