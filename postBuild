@@ -3,7 +3,7 @@ set -ex
 # Set up r kernel
 mkdir $HOME/RPackages
 echo ".libPaths('$HOME/RPackages')" > $HOME/.Rprofile
-R -e "install.packages(c('repr', 'IRdisplay', 'evaluate', 'crayon', 'pbdZMQ', 'devtools', 'uuid', 'digest'))"
+R -e "install.packages(c('repr', 'IRdisplay', 'evaluate', 'crayon', 'pbdZMQ', 'devtools', 'uuid', 'digest', 'ggplot2'))"
 R -e "devtools::install_github('IRkernel/IRkernel')"
 
 invoke build --env-name=root
