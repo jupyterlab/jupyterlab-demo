@@ -1,5 +1,4 @@
 # Grab the version of readline needed by R
-apt-get install libreadline6
 cp -p /lib/x86_64-linux-gnu/libreadline.so.6 $CONDA_DIR/lib/libreadline.so.6
 conda install -c conda-forge r-irkernel
 conda install -c conda-forge r-ggplot2
