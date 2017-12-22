@@ -4,15 +4,6 @@ cp -p /lib/x86_64-linux-gnu/libreadline.so.6 $CONDA_DIR/lib/libreadline.so.6
 conda install -c conda-forge r-irkernel
 conda install -c conda-forge r-ggplot2
 
-invoke build --env-name=root
-invoke demofiles
-invoke talk -t demo
-rm -rf demofiles
-rm -rf notebooks
-rm -rf narrative
-rm -rf slides
-jupyter lab clean
-
 # Julia dependencies - from https://github.com/jupyter/docker-stacks/blob/db3ee82ad08a83e3019d7aaa2d8d6e0090e0f646/datascience-notebook/Dockerfile
 # install Julia packages in /opt/julia instead of $HOME
 JULIA_PKGDIR=/opt/julia
@@ -54,3 +45,12 @@ julia -e 'Pkg.init()' && \
     chmod -R go+rx $CONDA_DIR/share/jupyter && \
     rm -rf $HOME/.local && \
     fix-permissions $JULIA_PKGDIR $CONDA_DIR/share/jupyter
+
+invoke build --env-name=root
+invoke demofiles
+invoke talk -t demo
+rm -rf demofiles
+rm -rf notebooks
+rm -rf narrative
+rm -rf slides
+jupyter lab clean
