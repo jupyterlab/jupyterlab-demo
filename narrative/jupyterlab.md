@@ -52,8 +52,8 @@ JupyterLab has a powerful and extensible architecture for handling a wide range 
 
 * CSV
   - `iris.csv` (small)
-  - `TCGA Data` (small to medium)
-  - Urban Data Challenge: `big.csv`
+  - `TCGA_Data` (small to medium)
+  - Urban_Data_Challenge: `big.csv`
 * Images
   - `hubble.png`
 * Vega-Lite
