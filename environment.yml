@@ -4,6 +4,7 @@ dependencies:
 - jupyterlab=0.30
 - nodejs=6.12
 - notebook=5.2
+- nbconvert=5.3
 - ipykernel=4.7
 - ipywidgets=7.0
 - widgetsnbextension=3.0

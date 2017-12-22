@@ -9,7 +9,6 @@ R -e "install.packages(c('repr', 'IRdisplay', 'evaluate', 'crayon', 'pbdZMQ', 'd
 R -e "devtools::install_github('IRkernel/IRkernel', lib='$R_USER_LIB')"
 R -e "IRkernel::installspec()"
 
-conda install nbconvert
 jupyter nbconvert --to notebook --execute  --ExecutePreprocessor.timeout=60 --stdout notebooks/R.ipynb > /dev/null;
 
 invoke build --env-name=root
