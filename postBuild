@@ -4,6 +4,7 @@ set -ex
 export R_USER_LIB=$HOME/R/library
 mkdir -p $R_USER_LIB
 echo 'R_LIBS_USER="$R_USER_LIB"' > $HOME/.Renviron
+cat $HOME/.Renviron
 R -e "install.packages(c('repr', 'IRdisplay', 'evaluate', 'crayon', 'pbdZMQ', 'devtools', 'uuid', 'digest'), lib='$R_USER_LIB', repos='http://cran.us.r-project.org')"
 R -e "devtools::install_github('IRkernel/IRkernel', lib='$R_USER_LIB')"
 
