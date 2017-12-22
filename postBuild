@@ -2,3 +2,4 @@ conda install -c conda-forge r-irkernel r-ggplot2
 invoke build --env-name=root
 invoke demofiles
 invoke talk -t demo
+rm -rf demofiles
