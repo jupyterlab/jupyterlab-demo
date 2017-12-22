@@ -1,7 +1,7 @@
 set -ex
 
 # Set up r kernel
-mkdir $HOME/R/libarary
+mkdir -p $HOME/R/library
 echo 'R_LIBS_USER="$HOME/R/library"' > $HOME/.Renviron
 R -e "install.packages(c('repr', 'IRdisplay', 'evaluate', 'crayon', 'pbdZMQ', 'devtools', 'uuid', 'digest'), lib='$HOME/R/library', repos='http://cran.us.r-project.org')"
 R -e "devtools::install_github('IRkernel/IRkernel', lib='$HOME/R/library')"
