@@ -1,28 +1,8 @@
 set -ex
 
-# Grab the version of readline needed by R
-cp -p /lib/x86_64-linux-gnu/libreadline.so.6 $CONDA_DIR/lib/libreadline.so.6
-conda install -c conda-forge r-irkernel
-conda install -c conda-forge r-ggplot2
-
-# Add Julia
-# Install IJulia as jovyan and then move the kernelspec out
-# to the system share location. Avoids problems with runtime UID change not
-# taking effect properly on the .local folder in the jovyan home dir.
-conda install -c conda-forge julia
-julia -e 'Pkg.init()' && \
-    julia -e 'Pkg.update()' && \
-    julia -e 'Pkg.add("Gadfly")' && \
-    julia -e 'Pkg.add("RDatasets")' && \
-    julia -e 'Pkg.add("IJulia")' && \
-    # Precompile Julia packages \
-    julia -e 'using Gadfly' && \
-    julia -e 'using RDatasets' && \
-    julia -e 'using IJulia' && \
-    # move kernelspec out of home \
-    mv $HOME/.local/share/jupyter/kernels/julia* $CONDA_DIR/share/jupyter/kernels/ && \
-    chmod -R go+rx $CONDA_DIR/share/jupyter && \
-    rm -rf $HOME/.local
+# Set up r kernel
+R -e "install.packages(c('repr', 'IRdisplay', 'evaluate', 'crayon', 'pbdZMQ', 'devtools', 'uuid', 'digest'))""
+R -e "devtools::install_github('IRkernel/IRkernel')""
 
 invoke build --env-name=root
 invoke demofiles
@@ -31,4 +11,6 @@ rm -rf demofiles
 rm -rf notebooks
 rm -rf narrative
 rm -rf slides
+rm demo/notebooks/Data.ipynb
+rm demo/notebooks/Julia.ipynb
 jupyter lab clean
