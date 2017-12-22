@@ -5,29 +5,11 @@ cp -p /lib/x86_64-linux-gnu/libreadline.so.6 $CONDA_DIR/lib/libreadline.so.6
 conda install -c conda-forge r-irkernel
 conda install -c conda-forge r-ggplot2
 
-# Julia dependencies - from https://github.com/jupyter/docker-stacks/blob/db3ee82ad08a83e3019d7aaa2d8d6e0090e0f646/datascience-notebook/Dockerfile
-# install Julia packages in $HOME/julia
-JULIA_PKGDIR=$HOME/julia
-JULIA_VERSION=0.6.2
-
-mkdir $HOME/julia-${JULIA_VERSION} && \
-    cd /tmp && \
-    wget -q https://julialang-s3.julialang.org/bin/linux/x64/`echo ${JULIA_VERSION} | cut -d. -f 1,2`/julia-${JULIA_VERSION}-linux-x86_64.tar.gz && \
-    echo "dc6ec0b13551ce78083a5849268b20684421d46a7ec46b17ec1fab88a5078580 *julia-${JULIA_VERSION}-linux-x86_64.tar.gz" | sha256sum -c - && \
-    tar xzf julia-${JULIA_VERSION}-linux-x86_64.tar.gz -C $HOME/julia-${JULIA_VERSION} --strip-components=1 && \
-    rm /tmp/julia-${JULIA_VERSION}-linux-x86_64.tar.gz
-ln -fs $HOME/julia-*/bin/julia $CONDA_DIR/bin/julia
-
-# Show Julia where conda libraries are \
-echo "push!(Libdl.DL_LOAD_PATH, \"$CONDA_DIR/lib\")" >> $HOME/juliarc.jl && \
-    # Create JULIA_PKGDIR \
-    mkdir $JULIA_PKGDIR && \
-    chown $NB_USER $JULIA_PKGDIR && \
-
-# Add Julia packages
+# Add Julia
 # Install IJulia as jovyan and then move the kernelspec out
 # to the system share location. Avoids problems with runtime UID change not
 # taking effect properly on the .local folder in the jovyan home dir.
+conda install -c conda-forge julia
 julia -e 'Pkg.init()' && \
     julia -e 'Pkg.update()' && \
     julia -e 'Pkg.add("Gadfly")' && \
