@@ -1,3 +1,5 @@
+set -ex
+
 # Grab the version of readline needed by R
 cp -p /lib/x86_64-linux-gnu/libreadline.so.6 $CONDA_DIR/lib/libreadline.so.6
 conda install -c conda-forge r-irkernel
