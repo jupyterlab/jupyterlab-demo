@@ -1,24 +1,24 @@
 channels:
 - conda-forge
 dependencies:
-- jupyterlab=0.30
-- nodejs=6.12
-- notebook=5.2
-- ipykernel=4.7
-- ipywidgets=7.0
-- widgetsnbextension=3.0
-- altair=1.2
-- bqplot=0.10
-- dask=0.15
-- matplotlib=2.1
-- pandas=0.20
-- pip=9.0
-- python=3.6
-- scikit-image=0.13
-- scikit-learn=0.18
-- seaborn=0.7
-- tensorflow=1.1
-- sympy=1.0
-- pyyaml
-- traittypes==0.0.6
-- invoke=0.21
+# - jupyterlab=0.30
+# - nodejs=6.12
+# - notebook=5.2
+# - ipykernel=4.7
+# - ipywidgets=7.0
+# - widgetsnbextension=3.0
+# - altair=1.2
+# - bqplot=0.10
+# - dask=0.15
+# - matplotlib=2.1
+# - pandas=0.20
+# - pip=9.0
+# - python=3.6
+# - scikit-image=0.13
+# - scikit-learn=0.18
+# - seaborn=0.7
+# - tensorflow=1.1
+# - sympy=1.0
+# - pyyaml
+# - traittypes==0.0.6
+# - invoke=0.21
