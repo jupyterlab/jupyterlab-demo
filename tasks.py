@@ -48,7 +48,7 @@ def build(ctx, env_name=env_name):
         ipython kernel install --name {1!s} --display-name {1!s} --sys-prefix &&
         jupyter labextension install @jupyterlab/fasta-extension@0.13 --no-build &&
         jupyter labextension install @jupyterlab/geojson-extension@0.13 --no-build &&
-        jupyter labextension install @jupyterlab/google-drive@0.0.9 --no-build &&
+        jupyter labextension install @jupyterlab/google-drive@0.9 --no-build &&
         jupyter labextension install @jupyterlab/plotly-extension@0.13 --no-build &&
         jupyter labextension install @jupyter-widgets/jupyterlab-manager@0.31 --no-build &&
         jupyter labextension install bqplot@0.3 --no-build &&
