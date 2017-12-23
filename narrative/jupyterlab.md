@@ -4,10 +4,11 @@ JupyterLab: The next generation user interface for Project Jupyter
 
 https://github.com/jupyter/jupyterlab
 
-Collaboration between:
+It has been a collaboration between:
 
 * Project Jupyter
 * Bloomberg
+* Anaconda
 
 ## 1) Building blocks of interactive computing
 
