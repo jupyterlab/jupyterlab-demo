@@ -86,7 +86,7 @@ def demofiles(ctx, clean=False, demofolder=demofolder):
     ]
     for repo in reponames:
         if not os.path.isdir(repo.split('/')[1]):
-            ctx.run('git clone https://github.com/{}.git'.format(repo))
+            ctx.run('git clone --depth 1 https://github.com/{}.git'.format(repo))
         assert os.path.isdir(repo.split('/')[1]), '{} failed download'.format(repo)
     # This empty file and empty folder are for showing drag and drop in jupyterlab
     ctx.run('touch move_this_file.txt; mkdir move_it_here')

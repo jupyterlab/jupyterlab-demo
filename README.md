@@ -10,14 +10,13 @@ generation user interface of Project Jupyter.
 
 ## Installation
 
-The requirements for this demo are described in `environment.yml`
+The demo requires [conda](https://conda.io/miniconda.html) and the package
+ requirements are described in `environment.yml`
 
-For users with [Anaconda](https://anaconda.org/), this JupyterLab uses a conda environment named `jupyterlab-demo`.
-
-To install the environment and demofiles, we use [pyinvoke](pyinvoke.org). To install pyinvoke with pip call:
+To install the environment and demofiles, we use [pyinvoke](pyinvoke.org). To install pyinvoke with conda call:
 
 ```bash
-pip install invoke
+conda install -c conda-forge invoke pyyaml
 ```
 
 ### Create the environment
@@ -25,8 +24,10 @@ pip install invoke
 To create the conda environment with all the dependencies and jupyterlab extensions for the demo, run:
 
 ```bash
-invoke environment
+invoke environment  # optionally --env-name=my-env-name
 ```
+
+The default environment name is `jupyterlab-demo`.
 
 To create the environment and remove previous installation, call:
 

@@ -1,7 +1,7 @@
 set -ex
 
 # Set up r kernel
-export R_USER_LIB=$HOME/R/library
+export R_USER_LIB=$HOME/.R/library
 mkdir -p $R_USER_LIB
 echo "R_LIBS_USER='$R_USER_LIB'" > $HOME/.Renviron
 cat $HOME/.Renviron

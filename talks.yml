@@ -35,7 +35,7 @@ demo:
     rename:
         demofiles/urban-data-challenge/public-transportation/geneva/schedule-real-time.csv: big.csv
         demofiles/tcga/extra_data/c2.cp.v3.0.symbols_edit.csv: smaller.csv
-        demofiles/altair/altair/v1/examples/json/field_spaces.vl.json: vega.vl.json
+        demofiles/altair/altair/v1/examples/json/bar.vl.json: vega.vl.json
         demofiles/PythonDataScienceHandbook/notebooks/03.08-Aggregation-and-Grouping.ipynb: notebooks/pandas.ipynb
         "demofiles/bqplot/examples/Basic Plotting/Basic Plotting.ipynb": notebooks/bqplot.ipynb
         "1024px-Hubble_Interacting_Galaxy_AM_0500-620_(2008-04-24).jpg": hubble.jpg
