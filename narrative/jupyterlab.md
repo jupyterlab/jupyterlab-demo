@@ -52,15 +52,15 @@ Tabs and single document mode allow you to focus.
 JupyterLab has a powerful and extensible architecture for handling a wide range of file formats:
 
 * CSV
-  - `iris.csv` (small)
+  - `./data/iris.csv` (small)
   - `TCGA_Data` (small to medium)
-  - Urban_Data_Challenge: `big.csv`
+  - Urban_Data_Challenge: `data/big.csv`
 * Images
-  - `hubble.png`
+  - `data/hubble.png`
 * Vega-Lite
-  - `vega.vl.json`
-* Open DC museum GeoJSON file from [OpenData DC](http://opendata.dc.gov/datasets/2e65fc16edc3481989d2cc17e6f8c533_54): `Museums_in_DC.geojson`
-* Notebook demonstrating bqplot widgets: `bqplot.ipynb`
+  - `data/vega.vl.json`
+* Open DC museum GeoJSON file from [OpenData DC](http://opendata.dc.gov/datasets/2e65fc16edc3481989d2cc17e6f8c533_54): `data/Museums_in_DC.geojson`
+* Notebook demonstrating bqplot widgets: `notebooks/bqplot.ipynb`
 
 ## 5) Plugin architecture
 
