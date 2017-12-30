@@ -4,11 +4,11 @@ JupyterLab: The next generation user interface for Project Jupyter
 
 https://github.com/jupyter/jupyterlab
 
-Collaboration between:
+It has been a collaboration between:
 
 * Project Jupyter
 * Bloomberg
-* Continuum
+* Anaconda
 
 ## 1) Building blocks of interactive computing
 
@@ -52,13 +52,15 @@ Tabs and single document mode allow you to focus.
 JupyterLab has a powerful and extensible architecture for handling a wide range of file formats:
 
 * CSV
-  - `TCGA/Extra Data` (small to medium)
-  - `Urban-Data-Challenge/public-transportation/geneva` (large)
+  - `./data/iris.csv` (small)
+  - `TCGA_Data` (small to medium)
+  - Urban_Data_Challenge: `data/big.csv`
 * Images
-  - `data`
+  - `data/hubble.png`
 * Vega-Lite
-  - `altair/altair/examples/json/field_spaces.vl.json`
-* Open DC museum GeoJSON file from [OpenData DC](http://opendata.dc.gov/datasets/2e65fc16edc3481989d2cc17e6f8c533_54)
+  - `data/vega.vl.json`
+* Open DC museum GeoJSON file from [OpenData DC](http://opendata.dc.gov/datasets/2e65fc16edc3481989d2cc17e6f8c533_54): `data/Museums_in_DC.geojson`
+* Notebook demonstrating bqplot widgets: `notebooks/bqplot.ipynb`
 
 ## 5) Plugin architecture
 

@@ -2,6 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
+.DS_Store
 
 # C extensions
 *.so
@@ -94,3 +95,4 @@ demofiles/
 # Talk folders
 test_talk/
 scipy2017/
+demo/
