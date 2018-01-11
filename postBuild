@@ -20,3 +20,5 @@ rm -rf narrative
 rm -rf slides
 rm demo/notebooks/Julia.ipynb
 jupyter lab clean
+
+echo 'hi'
