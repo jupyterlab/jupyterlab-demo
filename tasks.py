@@ -46,11 +46,11 @@ def build(ctx, env_name=env_name):
     ctx.run("""
         {0!s} activate {1!s} &&
         ipython kernel install --name {1!s} --display-name {1!s} --sys-prefix &&
-        jupyter labextension install @jupyterlab/fasta-extension@0.13 --no-build &&
-        jupyter labextension install @jupyterlab/geojson-extension@0.13 --no-build &&
-        jupyter labextension install @jupyterlab/google-drive@0.9 --no-build &&
-        jupyter labextension install @jupyterlab/plotly-extension@0.13 --no-build &&
-        jupyter labextension install @jupyter-widgets/jupyterlab-manager@0.31 --no-build &&
+        jupyter labextension install @jupyterlab/fasta-extension@0.14 --no-build &&
+        jupyter labextension install @jupyterlab/geojson-extension@0.14 --no-build &&
+        jupyter labextension install @jupyterlab/google-drive@0.11 --no-build &&
+        jupyter labextension install @jupyterlab/plotly-extension@0.14 --no-build &&
+        jupyter labextension install @jupyter-widgets/jupyterlab-manager@0.33 --no-build &&
         jupyter labextension install bqplot@0.3 --no-build &&
         jupyter lab clean && jupyter lab build
         """.format(source, env_name).strip().replace('\n', ''))
