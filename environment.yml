@@ -1,19 +1,18 @@
 channels:
 - conda-forge
 dependencies:
-- jupyterlab=0.30
+- jupyterlab==0.31
 - nodejs=6.12
 - notebook=5.2
 - nbconvert=5.3
 - ipykernel=4.7
-- ipywidgets=7.0
-- widgetsnbextension=3.0
+- ipywidgets=7.1
+- widgetsnbextension=3.1
 - altair=1.2
 - bqplot=0.10
 - dask=0.15
 - matplotlib=2.1
 - pandas=0.20
-- pip=9.0
 - python=3.6
 - scikit-image=0.13
 - scikit-learn=0.18
