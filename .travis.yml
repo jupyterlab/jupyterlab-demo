@@ -29,6 +29,5 @@ script:
   - jupyter nbconvert --to notebook --execute  --ExecutePreprocessor.timeout=60 --stdout notebooks/R.ipynb > /dev/null;
   - source deactivate
   - invoke demofiles
-  - rm -rf demofiles
-  - invoke talk -t test_talk
+  - invoke talk -t demo
   - invoke clean

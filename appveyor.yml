@@ -32,6 +32,5 @@ build: off
 test_script:
   - 'invoke environment'
   - 'invoke demofiles'
-  - 'rmdir /S /Q demofiles'
-  - 'invoke talk -t test_talk'
+  - 'invoke talk -t demo'
   - 'invoke clean'

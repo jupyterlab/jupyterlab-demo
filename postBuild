@@ -1,0 +1,24 @@
+set -ex
+
+# Set up r kernel
+export R_USER_LIB=$HOME/.R/library
+mkdir -p $R_USER_LIB
+echo "R_LIBS_USER='$R_USER_LIB'" > $HOME/.Renviron
+cat $HOME/.Renviron
+R -e "install.packages(c('repr', 'IRdisplay', 'evaluate', 'crayon', 'pbdZMQ', 'devtools', 'uuid', 'digest'), lib='$R_USER_LIB', repos='http://cran.us.r-project.org')"
+R -e "devtools::install_github('IRkernel/IRkernel', lib='$R_USER_LIB')"
+R -e "IRkernel::installspec()"
+
+jupyter nbconvert --to notebook --execute  --ExecutePreprocessor.timeout=60 --stdout notebooks/R.ipynb > /dev/null;
+
+invoke build --env-name=root
+invoke demofiles
+invoke talk -t demo
+rm -rf demofiles
+rm -rf notebooks
+rm -rf narrative
+rm -rf slides
+rm demo/notebooks/Julia.ipynb
+jupyter lab clean
+
+echo 'hi'
