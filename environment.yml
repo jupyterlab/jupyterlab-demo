@@ -2,8 +2,8 @@ channels:
 - conda-forge
 dependencies:
 - jupyterlab==0.31
-- nodejs=6.12
-- notebook=5.2
+- nodejs=8.9
+- notebook=5.4
 - nbconvert=5.3
 - ipykernel=4.7
 - ipywidgets=7.1
