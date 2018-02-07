@@ -1,7 +1,5 @@
 set -ex
 
-jupyter nbconvert --to notebook --execute  --ExecutePreprocessor.timeout=60 --stdout notebooks/R.ipynb > /dev/null;
-
 invoke build --env-name=root
 invoke demofiles
 invoke talk -t demo
