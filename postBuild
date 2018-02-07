@@ -10,5 +10,8 @@ rm -rf slides
 rm demo/notebooks/Julia.ipynb
 jupyter lab clean
 
+conda uninstall -y tensorflow
+rm -rf demo/TCGA_Data
+
 mkdir -p ~/.jupyter/lab/workspaces
 cp demo.jupyterlab-workspace ~/.jupyter/lab/workspaces
