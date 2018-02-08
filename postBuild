@@ -22,4 +22,4 @@ rm demo/notebooks/Julia.ipynb
 jupyter lab clean
 
 mkdir -p ~/.jupyter/lab/workspaces
-cp demo.jupyterlab-workspace ~/.jupyter/lab/workspaces
+mv demo.jupyterlab-workspace ~/.jupyter/lab/workspaces
