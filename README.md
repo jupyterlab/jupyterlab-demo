@@ -98,7 +98,7 @@ Our `invoke demofiles` clones repos from other authors.  The details of these re
 | PythonDataScienceHandbook/LICESNSE-CODE  | Jake Vanderplas  | [MIT](https://github.com/jakevdp/PythonDataScienceHandbook/blob/master/LICENSE-CODE)|
 | PythonDataScienceHandbook/LICESNSE-TEXT   |  Jake Vanderplas | [CC-BY-NC-ND-3.0](https://github.com/jakevdp/PythonDataScienceHandbook/blob/master/LICENSE-TEXT) |
 | altair   |  Jake Vanderplas | [BSD 3-clause](https://github.com/altair-viz/altair/blob/master/LICENSE) |
-| Urban-Data-Challenge   |  www.urbandatachallenge.org | None Listed | None Listed |
+| Urban-Data-Challenge   |  [Data Canvas](http://datacanvas.org/) | [CC-BY-NC-ND-3.0](http://datacanvas.org/public-transportation/) |
 | QuantEcon.notebooks   |  QuantEcon | [BSD 3-clause "New" or "Revised" License](https://github.com/QuantEcon/QuantEcon.notebooks/blob/master/LICENSE) |
 | TCGA   |  Gross et. al. | None Listed | None Listed |
 | TensorFlow-Examples   |  Aymeric Damien | [MIT](https://github.com/aymericdamien/TensorFlow-Examples/blob/master/LICENSE) |
