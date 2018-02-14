@@ -42,10 +42,12 @@ def environment(ctx, clean=False, env_name=env_name):
 
 
 @task
-def build(ctx, env_name=env_name):
+def build(ctx, env_name=env_name, kernel=True):
+    '''
+    Builds an environment with appropriate extensions.
+    '''
     ctx.run("""
         {0!s} activate {1!s} &&
-        ipython kernel install --name {1!s} --display-name {1!s} --sys-prefix &&
         jupyter labextension install @jupyterlab/fasta-extension@0.14 --no-build &&
         jupyter labextension install @jupyterlab/geojson-extension@0.14 --no-build &&
         jupyter labextension install @jupyterlab/google-drive@0.11 --no-build &&
@@ -54,6 +56,8 @@ def build(ctx, env_name=env_name):
         jupyter labextension install bqplot@0.3 --no-build &&
         jupyter lab clean && jupyter lab build
         """.format(source, env_name).strip().replace('\n', ''))
+    if kernel:
+        ctx.run("{0!s} activate {1!s} && ipython kernel install --name {1!s} --display-name {1!s} --sys-prefix".format(source, env_name))
 
 
 @task
