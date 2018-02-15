@@ -21,4 +21,5 @@ rm -rf slides
 rm demo/notebooks/Julia.ipynb
 jupyter lab clean
 
-echo 'hi'
+mkdir -p ~/.jupyter/lab/workspaces
+mv demo.jupyterlab-workspace ~/.jupyter/lab/workspaces
