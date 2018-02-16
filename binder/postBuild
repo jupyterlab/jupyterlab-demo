@@ -20,6 +20,3 @@ rm -rf narrative
 rm -rf slides
 rm demo/notebooks/Julia.ipynb
 jupyter lab clean
-
-mkdir -p ~/.jupyter/lab/workspaces
-mv demo.jupyterlab-workspace ~/.jupyter/lab/workspaces
