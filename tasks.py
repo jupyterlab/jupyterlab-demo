@@ -36,7 +36,7 @@ def environment(ctx, clean=False, env_name=env_name):
         ctx.run('{0!s} deactivate; conda remove -n {1!s} --all'.format(source, env_name))
     # Create a new environment
     print('creating environment {0!s}'.format(env_name))
-    ctx.run("conda env create -f environment.yml -n {0!s}".format(env_name))
+    ctx.run("conda env create -f binder/environment.yml -n {0!s}".format(env_name))
 
     build(ctx, env_name=env_name)
 
