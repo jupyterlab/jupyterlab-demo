@@ -6,8 +6,8 @@ dependencies:
 - notebook=5.4
 - nbconvert=5.3
 - ipykernel=4.7
-- ipywidgets=7.1
-- widgetsnbextension=3.1
+- ipywidgets=7.2
+- widgetsnbextension=3.2
 - altair=1.2
 - bqplot=0.10
 - dask=0.15
