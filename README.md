@@ -14,7 +14,10 @@ The demo requires [conda](https://conda.io/miniconda.html) and the package
  requirements are described in `environment.yml`
 
 To install the environment and demofiles, we use [pyinvoke](http://pyinvoke.org). To install pyinvoke with conda call:
-
+```bash
+# add the conda forge channel.
+conda config --add channels conda-forge --yes
+```
 ```bash
 conda install -c conda-forge invoke pyyaml
 ```
