@@ -53,7 +53,7 @@ def build(ctx, env_name=env_name, kernel=True):
         jupyter labextension install @jupyterlab/plotly-extension@0.17 --no-build &&
         jupyter labextension install @jupyter-widgets/jupyterlab-manager@0.36 --no-build &&
         jupyter labextension install bqplot@0.4.0 --no-build &&
-        jupyter lab clean && jupyter lab build
+        jupyter lab clean && jupyter lab build --dev
         """.format(source, env_name).strip().replace('\n', ''))
     if kernel:
         ctx.run("{0!s} activate {1!s} && ipython kernel install --name {1!s} --display-name {1!s} --sys-prefix".format(source, env_name))
