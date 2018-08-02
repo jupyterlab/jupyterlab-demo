@@ -31,4 +31,3 @@ dependencies:
 - xleaflet=0.2.1
 - r-ggplot2
 - r-irkernel=0.8.11
-- r-base=3.4.1=h4fe35fd_8  # [linux]
