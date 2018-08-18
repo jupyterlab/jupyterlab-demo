@@ -2,7 +2,7 @@ channels:
 - QuantStack
 - conda-forge
 dependencies:
-- jupyterlab=0.33.4
+- jupyterlab=0.34.0
 - nodejs=8.9
 - notebook=5.6
 - nbconvert=5.3
