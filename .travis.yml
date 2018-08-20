@@ -17,7 +17,7 @@ install:
   - conda update -q conda
   # Useful for debugging any issues with conda
   - conda info -a
-  - conda install pip
+  - python -m pip install -U pip
   - pip install invoke
   - conda install pyyaml
 script:

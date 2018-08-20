@@ -51,7 +51,7 @@ def build(ctx, env_name=env_name, kernel=True):
         jupyter labextension install @jupyterlab/fasta-extension@0.17 --no-build &&
         jupyter labextension install @jupyterlab/geojson-extension@0.17 --no-build &&
         jupyter labextension install @jupyterlab/plotly-extension@0.17 --no-build &&
-        jupyter labextension install @jupyter-widgets/jupyterlab-manager@0.36 --no-build &&
+        jupyter labextension install @jupyter-widgets/jupyterlab-manager@0.37 --no-build &&
         jupyter labextension install bqplot@0.4.0 --no-build &&
         jupyter labextension install jupyter-leaflet@0.9.0 --no-build &&
         jupyter lab clean && jupyter lab build --dev
