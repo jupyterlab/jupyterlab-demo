@@ -2,20 +2,20 @@ channels:
 - conda-forge
 dependencies:
 # Jupyter
-- jupyterlab=0.34.0
+- jupyterlab=0.35
 - nodejs=8.9
-- notebook=5.6
-- nbconvert=5.3
-- widgetsnbextension=3.3
+- notebook=5.8
+- nbconvert=5.4
+- widgetsnbextension=3.4
 # Python Kernel
-- ipykernel=4.7
-- ipywidgets=7.3
+- ipykernel=5.1
+- ipywidgets=7.4
 - ipyleaflet=0.9
 - altair=1.2
 - bqplot=0.11.5
 - dask=0.15
 - matplotlib=3.1.0
-- pandas=0.20
+- pandas=0.24
 - python=3.6
 - scikit-image=0.13
 - scikit-learn=0.19
@@ -33,4 +33,4 @@ dependencies:
 - xleaflet=0.7.0
 # R Kernel
 - r-ggplot2
-- r-irkernel=0.8.11
+- r-irkernel=0.8.15
