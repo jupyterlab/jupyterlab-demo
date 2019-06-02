@@ -1,19 +1,20 @@
 channels:
-- QuantStack
 - conda-forge
 dependencies:
+# Jupyter
 - jupyterlab=0.34.0
 - nodejs=8.9
 - notebook=5.6
 - nbconvert=5.3
+- widgetsnbextension=3.3
+# Python Kernel
 - ipykernel=4.7
 - ipywidgets=7.3
 - ipyleaflet=0.9
-- widgetsnbextension=3.3
 - altair=1.2
-- bqplot=0.11
+- bqplot=0.11.5
 - dask=0.15
-- matplotlib=2.1
+- matplotlib=3.1.0
 - pandas=0.20
 - python=3.6
 - scikit-image=0.13
@@ -24,10 +25,12 @@ dependencies:
 - pyyaml
 - traittypes==0.2.1
 - invoke=0.21
-- xeus-cling=0.4.5
-- xtensor=0.17.0
-- xtensor-blas=0.13
-- xwidgets=0.12.2
-- xleaflet=0.2.1
+# C++ Kernel
+- xeus-cling=0.5.1
+- xtensor=0.20.7
+- xtensor-blas=0.16.1
+- xwidgets=0.17.0
+- xleaflet=0.7.0
+# R Kernel
 - r-ggplot2
 - r-irkernel=0.8.11
