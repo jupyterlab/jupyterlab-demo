@@ -14,7 +14,7 @@ dependencies:
 - altair=1.2
 - bqplot=0.11.5
 - dask=0.15
-- matplotlib=2.1
+- matplotlib=3.1.0
 - pandas=0.20
 - python=3.6
 - scikit-image=0.13
@@ -26,11 +26,11 @@ dependencies:
 - traittypes==0.2.1
 - invoke=0.21
 # C++ Kernel
-- xeus-cling=0.4.11
-- xtensor=0.19.2
-- xtensor-blas=0.15.1
-- xwidgets=0.16.1
-- xleaflet=0.6.1
+- xeus-cling=0.5.1
+- xtensor=0.20.7
+- xtensor-blas=0.16.1
+- xwidgets=0.17.0
+- xleaflet=0.7.0
 # R Kernel
 - r-ggplot2
 - r-irkernel=0.8.11
