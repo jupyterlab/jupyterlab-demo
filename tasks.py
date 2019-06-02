@@ -53,7 +53,7 @@ def build(ctx, env_name=env_name, kernel=True):
         jupyter labextension install @jupyterlab/plotly-extension@0.18 --no-build &&
         jupyter labextension install @jupyter-widgets/jupyterlab-manager@0.38 --no-build &&
         jupyter labextension install bqplot@0.4 --no-build &&
-        jupyter labextension install jupyter-leaflet@0.9 --no-build &&
+        jupyter labextension install jupyter-leaflet@0.10 --no-build &&
         jupyter lab clean && jupyter lab build --dev
         """.format(source, env_name).strip().replace('\n', ''))
     if kernel:
