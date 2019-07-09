@@ -10,7 +10,7 @@ It started as a collaboration between:
 * Bloomberg
 * (then) Continuum
 
-and now involves many other people from many other places (not purely academic or business, follows plugin design where no feature gets preferential treatment over others)
+and now involves many other people from many other places (not purely academic or business)
 
 ## 1) Building blocks of interactive computing
 
