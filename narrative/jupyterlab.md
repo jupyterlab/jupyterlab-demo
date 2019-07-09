@@ -4,11 +4,13 @@ JupyterLab: The next generation user interface for Project Jupyter
 
 https://github.com/jupyter/jupyterlab
 
-It has been a collaboration between:
+It started as a collaboration between:
 
 * Project Jupyter
 * Bloomberg
-* Anaconda
+* (then) Continuum
+
+and now involves many other people from many other places (not purely academic or business, follows plugin design where no feature gets preferential treatment other others)
 
 ## 1) Building blocks of interactive computing
 
@@ -62,7 +64,21 @@ JupyterLab has a powerful and extensible architecture for handling a wide range 
 * Open DC museum GeoJSON file from [OpenData DC](http://opendata.dc.gov/datasets/2e65fc16edc3481989d2cc17e6f8c533_54): `data/Museums_in_DC.geojson`
 * Notebook demonstrating bqplot widgets: `notebooks/bqplot.ipynb`
 
-## 5) Plugin architecture
+## 5) Find and Replace
+first class support for find and replace across JupyterLab, currently supported in 
+notebooks and text files and is extensible for other widgets who wish to support it.
+
+## 6) Status Bar
+We have integrated the JupyterLab Status Bar package package into the core distribution. Extensions can add their own status to it as well 
+
+## 7) Printing
+
+a printing system allows extensions to customize how documents and activities are printed. 
+
+## 8) JupyterHub
+We now include the JupyterHub extension as a core JupyterLab extension, so you no longer need to install @jupyterlab/hub-extension (supporting multi-user + authentication workflows)
+
+## 8) Plugin architecture
 
 The genius of open-source is being able to shape your tools to your heart's content.
 
