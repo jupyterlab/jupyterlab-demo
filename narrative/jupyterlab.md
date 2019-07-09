@@ -16,6 +16,7 @@ and now involves many other people from many other places (not purely academic o
 
 ### Start with the launcher
 
+
 Use it to open different activities:
 
 * Notebook
@@ -79,7 +80,7 @@ A printing system allows extensions to customize how documents and activities ar
 
 We now include the JupyterHub extension as a core JupyterLab extension, so you no longer need to install @jupyterlab/hub-extension (supporting multi-user + authentication workflows)
 
-## 8) Plugin architecture
+## 9) Plugin architecture
 
 The genius of open-source is being able to shape your tools to your heart's content.
 
