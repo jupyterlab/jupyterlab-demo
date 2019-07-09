@@ -10,7 +10,7 @@ It started as a collaboration between:
 * Bloomberg
 * (then) Continuum
 
-and now involves many other people from many other places (not purely academic or business, follows plugin design where no feature gets preferential treatment other others)
+and now involves many other people from many other places (not purely academic or business, follows plugin design where no feature gets preferential treatment over others)
 
 ## 1) Building blocks of interactive computing
 
@@ -73,9 +73,10 @@ We have integrated the JupyterLab Status Bar package package into the core distr
 
 ## 7) Printing
 
-a printing system allows extensions to customize how documents and activities are printed. 
+A printing system allows extensions to customize how documents and activities are printed. 
 
 ## 8) JupyterHub
+
 We now include the JupyterHub extension as a core JupyterLab extension, so you no longer need to install @jupyterlab/hub-extension (supporting multi-user + authentication workflows)
 
 ## 8) Plugin architecture
