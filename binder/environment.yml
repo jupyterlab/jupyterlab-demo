@@ -5,13 +5,13 @@ dependencies:
 - jupyterlab=1.0
 - nodejs=8.9
 - nbconvert=5.4
-- widgetsnbextension=3.4
+- widgetsnbextension=3.5
 # Python Kernel
 - ipykernel=5.1
-- ipywidgets=7.4
-- ipyleaflet=0.9
+- ipywidgets=7.5
+- ipyleaflet=0.11.1
 - altair=1.2
-- bqplot=0.11.5
+- bqplot=0.11.6
 - dask=0.15
 - matplotlib=3.1.0
 - pandas=0.24
