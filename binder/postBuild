@@ -9,3 +9,6 @@ rm -rf narrative
 rm -rf slides
 rm demo/notebooks/Julia.ipynb
 jupyter lab clean
+
+# Setup a workspace
+jupyter lab workspaces import binder/workspace.json
