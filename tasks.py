@@ -48,13 +48,13 @@ def build(ctx, env_name=env_name, kernel=True):
     '''
     ctx.run("""
         {0!s} activate {1!s} &&
-        jupyter labextension install @jupyterlab/fasta-extension@0.18 --no-build &&
-        jupyter labextension install @jupyterlab/geojson-extension@0.18 --no-build &&
-        jupyter labextension install @jupyterlab/plotly-extension@0.18 --no-build &&
-        jupyter labextension install @jupyter-widgets/jupyterlab-manager@0.38 --no-build &&
-        jupyter labextension install bqplot@0.4 --no-build &&
-        jupyter labextension install jupyter-leaflet@0.10 --no-build &&
-        jupyter lab clean && jupyter lab build --dev
+        jupyter labextension install @jupyterlab/fasta-extension@1.0 --no-build &&
+        jupyter labextension install @jupyterlab/geojson-extension@1.0 --no-build &&
+        jupyter labextension install @jupyterlab/plotly-extension@1.0 --no-build &&
+        jupyter labextension install @jupyter-widgets/jupyterlab-manager@1.0 --no-build &&
+        jupyter labextension install bqplot@0.4.6 --no-build &&
+        jupyter labextension install jupyter-leaflet@0.11 --no-build &&
+        jupyter lab clean && jupyter lab build --dev-build=False
         """.format(source, env_name).strip().replace('\n', ''))
     if kernel:
         ctx.run("{0!s} activate {1!s} && ipython kernel install --name {1!s} --display-name {1!s} --sys-prefix".format(source, env_name))
