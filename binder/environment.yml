@@ -3,33 +3,33 @@ channels:
 dependencies:
 # Jupyter
 - jupyterlab=1.0
-- nodejs=8.9
-- nbconvert=5.4
+- nodejs=11
+- nbconvert=5.5
 - widgetsnbextension=3.5
 # Python Kernel
 - ipykernel=5.1
 - ipywidgets=7.5
 - ipyleaflet=0.11.1
-- altair=1.2
+- altair=3.1
 - bqplot=0.11.6
-- dask=0.15
-- matplotlib=3.1.0
+- dask=2.1
+- matplotlib=3.1
 - pandas=0.24
-- python=3.6
-- scikit-image=0.13
-- scikit-learn=0.19
-- seaborn=0.7
-- tensorflow=1.1
-- sympy=1.0
+- python=3.7
+- scikit-image=0.15
+- scikit-learn=0.21
+- seaborn=0.9
+- tensorflow=1.14
+- sympy=1.4
 - pyyaml
 - traittypes==0.2.1
 - invoke=0.21
 # C++ Kernel
-- xeus-cling=0.5.1
-- xtensor=0.20.7
+- xeus-cling=0.6
+- xtensor=0.20.8
 - xtensor-blas=0.16.1
-- xwidgets=0.17.0
-- xleaflet=0.7.0
+- xwidgets=0.18.0
+- xleaflet=0.9.0
 # R Kernel
 - r-ggplot2
-- r-irkernel=0.8.15
+- r-irkernel=1.0
