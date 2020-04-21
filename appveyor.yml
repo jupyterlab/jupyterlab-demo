@@ -4,8 +4,8 @@ skip_branch_with_pr: true
 # environment variables
 environment:
   matrix:
-    - PYTHON: "C:\\Miniconda35-x64"
-      PYTHON_VERSION: "3.5.x"
+    - PYTHON: "C:\\Miniconda37-x64"
+      PYTHON_VERSION: "3.7.x"
       PYTHON_MAJOR: 3
       PYTHON_ARCH: "64"
 
