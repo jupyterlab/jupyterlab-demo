@@ -2,16 +2,16 @@ channels:
 - conda-forge
 dependencies:
 # Jupyter
-- jupyterlab=1.0
+- jupyterlab=2
 - nodejs=11
 - nbconvert=5.5
 - widgetsnbextension=3.5
 # Python Kernel
 - ipykernel=5.1
 - ipywidgets=7.5
-- ipyleaflet=0.11.1
+- ipyleaflet=0.12
 - altair=3.1
-- bqplot=0.11.6
+- bqplot=0.12
 - dask=2.1
 - matplotlib=3.1
 - pandas=0.24
