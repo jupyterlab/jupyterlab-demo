@@ -46,14 +46,18 @@ def build(ctx, env_name=env_name, kernel=True):
     '''
     Builds an environment with appropriate extensions.
 
-    TODO: add back when ready
+    TODO: add back when ready:
+    jupyter labextension install @jupyterlab/fasta-extension@2.0 --no-build &&
+    jupyter labextension install @jupyterlab/geojson-extension@2.0 --no-build &&
+
+    TODO: remove explicit jupyter-offlinenotebook install
+    '''
+
     ctx.run("""
         {0!s} activate {1!s} &&
-        jupyter labextension install @jupyterlab/fasta-extension@2.0 --no-build &&
-        jupyter labextension install @jupyterlab/geojson-extension@2.0 --no-build &&
+        jupyter labextension install jupyter-offlinenotebook --no-build &&
         jupyter lab clean && jupyter lab build --dev-build=False --minimize=False
         """.format(source, env_name).strip().replace('\n', ''))
-    '''
     if kernel:
         ctx.run("{0!s} activate {1!s} && ipython kernel install --name {1!s} --display-name {1!s} --sys-prefix".format(source, env_name))
 
