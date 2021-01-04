@@ -3,7 +3,7 @@ channels:
 dependencies:
 # Jupyter
 - jupyterlab=3
-- nodejs=14
+- nodejs=12
 - nbconvert=6
 # Python Kernel
 - ipykernel=5.1
