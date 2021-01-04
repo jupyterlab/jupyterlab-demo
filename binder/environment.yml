@@ -28,8 +28,8 @@ dependencies:
 # - xeus-cling=0.6
 - xtensor=0.20.8
 - xtensor-blas=0.16.1
-- xwidgets=0.18.0
-- xleaflet=0.9.0
+# - xwidgets=0.18.0
+# - xleaflet=0.9.0
 # R Kernel
 - r-ggplot2
 - r-irkernel=1.0
