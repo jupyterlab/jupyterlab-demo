@@ -2,23 +2,23 @@ channels:
 - conda-forge
 dependencies:
 # Jupyter
-- jupyterlab=2
-- nodejs=11
-- nbconvert=5.5
-- widgetsnbextension=3.5
+- jupyterlab=3
+- nodejs=14
+- nbconvert=6
 # Python Kernel
 - ipykernel=5.1
-- ipywidgets=7.5
-- ipyleaflet=0.12
-- altair=3.1
-- bqplot=0.12
-- dask=2.1
-- matplotlib=3.1
-- pandas=0.24
+- xeus-python=0.9
+- ipywidgets=7.6
+# - ipyleaflet=0.12
+# - altair=3.1
+# - bqplot=0.12
+# - dask=2.1
+# - matplotlib=3.1
+- pandas=1
 - python=3.7
 - scikit-image=0.15
 - scikit-learn=0.21
-- seaborn=0.9
+- seaborn=0.11
 - tensorflow=1.13
 - sympy=1.4
 - pyyaml
