@@ -44,9 +44,7 @@ def environment(ctx, clean=False, env_name=env_name):
 @task
 def build(ctx, env_name=env_name, kernel=True):
     '''
-    Builds an environment with appropriate extensions.    
-
-    TODO: remove explicit jupyter-offlinenotebook install
+    Builds an environment with appropriate extensions.
     '''
 
     ctx.run("""
