@@ -38,24 +38,6 @@ def environment(ctx, clean=False, env_name=env_name):
     print('creating environment {0!s}'.format(env_name))
     ctx.run("conda env create -f binder/environment.yml -n {0!s}".format(env_name))
 
-    build(ctx, env_name=env_name)
-
-
-@task
-def build(ctx, env_name=env_name, kernel=True):
-    '''
-    Builds an environment with appropriate extensions.
-    '''
-
-    ctx.run("""
-        {0!s} activate {1!s} &&
-        jupyter labextension install @jupyterlab/fasta-extension@3.0 --no-build &&
-        jupyter labextension install @jupyterlab/geojson-extension@3.0 --no-build &&
-        jupyter lab clean && jupyter lab build --dev-build=False --minimize=False
-        """.format(source, env_name).strip().replace('\n', ''))
-    if kernel:
-        ctx.run("{0!s} activate {1!s} && ipython kernel install --name {1!s} --display-name {1!s} --sys-prefix".format(source, env_name))
-
 
 @task
 def demofiles(ctx, clean=False, demofolder=demofolder):
@@ -187,7 +169,7 @@ def talk(ctx, talk_name, clean=False):
 
 
 # Configure cross-platform settings.
-ns = Collection(environment, build, demofiles, r, clean, talk)
+ns = Collection(environment, demofiles, r, clean, talk)
 ns.configure({
     'run': {
         'shell': which('bash') if os.name != 'nt' else which('cmd'),
