@@ -1,6 +1,5 @@
 set -ex
 
-invoke build --env-name=root --no-kernel
 invoke demofiles
 invoke talk -t demo
 rm -rf demofiles
