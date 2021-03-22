@@ -17,6 +17,8 @@ jobs:
           mamba-version: "*"
           channels: conda-forge,defaults
           channel-priority: true
+          activate-environment: jupyterlab-demo
+          environment-file: binder/environment.yml
       - shell: bash -l {0}
         run: |
           conda info
@@ -28,13 +30,10 @@ jobs:
         run: mamba install invoke pyyaml
       - shell: bash -l {0}
         run: |
-          invoke environment
           invoke r
-          source activate jupyterlab-demo
           jupyter nbconvert --to notebook --execute  --ExecutePreprocessor.timeout=60 --stdout notebooks/Data.ipynb > /dev/null;
           jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=60 --stdout notebooks/Fasta.ipynb > /dev/null;
           jupyter nbconvert --to notebook --execute  --ExecutePreprocessor.timeout=60 --stdout notebooks/R.ipynb > /dev/null;
-          source deactivate
           invoke demofiles
           invoke talk -t demo
           invoke clean
