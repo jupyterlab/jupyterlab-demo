@@ -37,6 +37,7 @@ def environment(ctx, clean=False, env_name=env_name):
     # Create a new environment
     print('creating environment {0!s}'.format(env_name))
     ctx.run("conda env create -f binder/environment.yml -n {0!s}".format(env_name))
+    ctx.run("{0!s} activate {1!s} && ipython kernel install --name {1!s} --display-name {1!s} --sys-prefix".format(source, env_name))
 
 
 @task
