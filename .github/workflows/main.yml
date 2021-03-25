@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: '*'
 
+defaults:
+  run:
+    shell: bash -l {0}
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -19,17 +23,14 @@ jobs:
           channel-priority: true
           activate-environment: jupyterlab-demo
           environment-file: binder/environment.yml
-      - shell: bash -l {0}
-        run: |
+      - run: |
           conda info
           conda list
           conda config --show-sources
           conda config --show
           printenv | sort
-      - shell: bash -l {0}
-        run: mamba install invoke pyyaml
-      - shell: bash -l {0}
-        run: |
+      - run: mamba install invoke pyyaml
+      - run: |
           invoke r
           jupyter nbconvert --to notebook --execute  --ExecutePreprocessor.timeout=60 --stdout notebooks/Data.ipynb > /dev/null;
           jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=60 --stdout notebooks/Fasta.ipynb > /dev/null;
