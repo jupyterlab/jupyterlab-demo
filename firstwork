@@ -1,0 +1,9 @@
+s = 'Reaffirmed at [ICRA] BBB-; Outlook revised to Stable from negative'
+m = s.find( 'ICRA' )
+n = str( s )[m:]
+print(n)
+s2 = 'geeks for geeks'
+m1 = s2.find( 'for' )
+print(m1)# type: int
+n1 = str(s2)[m1:]
+print(n1)
