@@ -2,10 +2,12 @@ channels:
 - conda-forge
 dependencies:
 # Jupyter
-- jupyterlab=3
+- jupyterlab=3.1
 - jupyter-offlinenotebook=0.2
 - nodejs=12
 - nbconvert=6
+# RTC
+- jupyterlab-link-share=0.2
 # Python Kernel
 - ipykernel=5.1
 - xeus-python=0.9
