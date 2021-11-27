@@ -1,5 +1,6 @@
 set -ex
 
+invoke r
 invoke demofiles
 invoke talk -t demo
 rm -rf demofiles

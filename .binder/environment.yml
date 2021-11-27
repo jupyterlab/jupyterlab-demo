@@ -12,7 +12,7 @@ dependencies:
 - jupyterlab-geojson=3.1
 - jupyterlab-link-share=0.2
 # Python Kernel
-- ipykernel=5.1
+- ipykernel=6.5
 - xeus-python=0.9
 - ipywidgets=7.6
 - widgetsnbextension=3.5

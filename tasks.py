@@ -1,4 +1,3 @@
-from __future__ import print_function
 from invoke import task, Collection
 import os
 from yaml import safe_load
@@ -36,7 +35,10 @@ def environment(ctx, clean=False, env_name=env_name):
         ctx.run('{0!s} deactivate; mamba remove -n {1!s} --all'.format(source, env_name))
     # Create a new environment
     print('creating environment {0!s}'.format(env_name))
-    ctx.run("mamba env update -f .binder/environment.yml -n {0!s}".format(env_name))
+    ctx.run(
+        """mamba env update -f .binder/environment.yml -n {0!s}
+        && mamba clean -yaf""".format(env_name)
+    )
 
     build(ctx, env_name=env_name)
 
@@ -48,7 +50,11 @@ def build(ctx, env_name=env_name, kernel=True):
     '''
 
     if kernel:
-        ctx.run("{0!s} activate {1!s} && ipython kernel install --name {1!s} --display-name {1!s} --sys-prefix".format(source, env_name))
+        ctx.run(
+            """{0!s} activate {1!s}
+            && ipython kernel install --name {1!s} --display-name {1!s} --sys-prefix
+            """.format(source, env_name)
+        )
 
 
 @task
