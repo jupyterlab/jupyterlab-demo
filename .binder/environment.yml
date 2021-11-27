@@ -37,8 +37,5 @@ dependencies:
 - xtensor-blas=0.16.1
 - xwidgets=0.24.2
 - xleaflet=0.13.1
-# R Kernel
-- r-ggplot2
-- r-irkernel=1.0
 # CLI tools
 - vim
