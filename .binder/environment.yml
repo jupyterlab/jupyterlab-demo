@@ -1,12 +1,14 @@
 channels:
 - conda-forge
 dependencies:
-# Jupyter
+# applications
 - jupyterlab=3.2
-- jupyter-offlinenotebook=0.2
-- nodejs=12
+- retrolab=0.3
 - nbconvert=6
-# RTC
+# extensions
+- jupyter-offlinenotebook=0.2
+- jupyterlab-fasta=3.1
+- jupyterlab-geojson=3.1
 - jupyterlab-link-share=0.2
 # Python Kernel
 - ipykernel=5.1
@@ -17,7 +19,7 @@ dependencies:
 - altair=4.1
 - bqplot=0.12.20
 - dask=2020.12
-- matplotlib=3.1
+- matplotlib-base=3.1
 - pandas=1
 - python=3.7
 - scikit-image=0.15
@@ -37,3 +39,5 @@ dependencies:
 # R Kernel
 - r-ggplot2
 - r-irkernel=1.0
+# CLI tools
+- vim

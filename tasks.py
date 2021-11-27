@@ -1,7 +1,7 @@
 from __future__ import print_function
 from invoke import task, Collection
 import os
-import yaml
+from yaml import safe_load
 from subprocess import check_output
 
 from shutil import which
@@ -33,10 +33,10 @@ def environment(ctx, clean=False, env_name=env_name):
     '''
     if clean:
         print('deleting environment')
-        ctx.run('{0!s} deactivate; conda remove -n {1!s} --all'.format(source, env_name))
+        ctx.run('{0!s} deactivate; mamba remove -n {1!s} --all'.format(source, env_name))
     # Create a new environment
     print('creating environment {0!s}'.format(env_name))
-    ctx.run("conda env create -f binder/environment.yml -n {0!s}".format(env_name))
+    ctx.run("mamba env update -f .binder/environment.yml -n {0!s}".format(env_name))
 
     build(ctx, env_name=env_name)
 
@@ -44,15 +44,9 @@ def environment(ctx, clean=False, env_name=env_name):
 @task
 def build(ctx, env_name=env_name, kernel=True):
     '''
-    Builds an environment with appropriate extensions.
+    Builds an environment with appropriate kernels.
     '''
 
-    ctx.run("""
-        {0!s} activate {1!s} &&
-        jupyter labextension install @jupyterlab/fasta-extension@3.0 --no-build &&
-        jupyter labextension install @jupyterlab/geojson-extension@3.0 --no-build &&
-        jupyter lab clean && jupyter lab build --dev-build=False --minimize=False
-        """.format(source, env_name).strip().replace('\n', ''))
     if kernel:
         ctx.run("{0!s} activate {1!s} && ipython kernel install --name {1!s} --display-name {1!s} --sys-prefix".format(source, env_name))
 
@@ -101,11 +95,11 @@ def clean(ctx, env_name=env_name, demofolder=demofolder):
     env_name: name of conda environment
     demofolder: path to folder with demofiles
     '''
-    cmd = '{0!s} deactivate && conda remove --name {1!s} --all'
+    cmd = '{0!s} deactivate && mamba remove --name {1!s} --all'
     ctx.run(cmd.format(source, env_name))
 
     with open("talks.yml", 'r') as stream:
-        talks = yaml.load(stream)
+        talks = safe_load(stream)
     for t in talks:
         rmdir(t)
 
@@ -117,7 +111,7 @@ def r(ctx, env_name=env_name):
     '''
     Installs the r kernel and associated libs.
     '''
-    cmd = '{0!s} activate {1!s} && conda install -c conda-forge r-irkernel r-ggplot2'
+    cmd = '{0!s} activate {1!s} && mamba install -c conda-forge r-irkernel r-ggplot2'
     ctx.run(cmd.format(source, env_name))
 
 
@@ -154,7 +148,7 @@ def talk(ctx, talk_name, clean=False):
             oldname: newname
     '''
     with open("talks.yml", 'r') as stream:
-        talks = yaml.load(stream)
+        talks = safe_load(stream)
     if clean:
         rmdir(talk_name)
     if not os.path.exists(talk_name):
