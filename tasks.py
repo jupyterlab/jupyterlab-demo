@@ -117,8 +117,11 @@ def r(ctx, env_name=env_name):
     '''
     Installs the r kernel and associated libs.
     '''
-    cmd = '{0!s} activate {1!s} && mamba install -c conda-forge r-irkernel r-ggplot2'
-    ctx.run(cmd.format(source, env_name))
+    ctx.run(
+        """{0!s} activate {1!s}
+        && mamba install -yc conda-forge -c nodefaults r-irkernel r-ggplot2
+        """.format(source, env_name)
+    )
 
 
 @task
