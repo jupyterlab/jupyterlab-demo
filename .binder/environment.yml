@@ -1,5 +1,6 @@
 channels:
 - conda-forge
+- nodefaults
 dependencies:
 # applications
 - jupyterlab=3.2

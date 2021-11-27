@@ -10,16 +10,12 @@ generation user interface of Project Jupyter.
 
 ## Installation
 
-The demo requires [conda](https://conda.io/miniconda.html) and the package
+The demo requires `mamba`, available as part of [Mambaforge](https://github.com/conda-forge/miniforge) and the package
  requirements are described in `environment.yml`
 
-To install the environment and demofiles, we use [pyinvoke](http://pyinvoke.org). To install pyinvoke with conda call:
+To install the environment and demofiles, we use [pyinvoke](http://pyinvoke.org). To install pyinvoke with `mamba` call:
 ```bash
-# add the conda forge channel.
-conda config --add channels conda-forge --yes
-```
-```bash
-conda install -c conda-forge invoke pyyaml
+mamba install -c conda-forge invoke pyyaml
 ```
 
 ### Create the environment
