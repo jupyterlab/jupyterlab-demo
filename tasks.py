@@ -105,7 +105,7 @@ def clean(ctx, env_name=env_name, demofolder=demofolder):
     ctx.run(cmd.format(source, env_name))
 
     with open("talks.yml", 'r') as stream:
-        talks = yaml.load(stream)
+        talks = yaml.safe_load(stream)
     for t in talks:
         rmdir(t)
 
@@ -154,7 +154,7 @@ def talk(ctx, talk_name, clean=False):
             oldname: newname
     '''
     with open("talks.yml", 'r') as stream:
-        talks = yaml.load(stream)
+        talks = yaml.safe_load(stream)
     if clean:
         rmdir(talk_name)
     if not os.path.exists(talk_name):
