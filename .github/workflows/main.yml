@@ -18,12 +18,12 @@ jobs:
       - name: Cache conda
         uses: actions/cache@v3
         env:
-          # Increase this value to reset cache if binder/environment.yml has not changed
+          # Increase this value to reset cache if .binder/environment.yml has not changed
           CACHE_NUMBER: 0
         with:
           path: ~/conda_pkgs_dir
           key:
-            ${{ runner.os }}-conda-${{ env.CACHE_NUMBER }}-${{ hashFiles('binder/environment.yml') }}
+            ${{ runner.os }}-conda-${{ env.CACHE_NUMBER }}-${{ hashFiles('.binder/environment.yml') }}
       - uses: conda-incubator/setup-miniconda@v2
         with:
           python-version: 3.9
@@ -31,7 +31,7 @@ jobs:
           channels: conda-forge,defaults
           channel-priority: true
           activate-environment: jupyterlab-demo
-          environment-file: binder/environment.yml
+          environment-file: .binder/environment.yml
           use-only-tar-bz2: true # IMPORTANT: This needs to be set for caching to work properly!
       - run: |
           conda info
