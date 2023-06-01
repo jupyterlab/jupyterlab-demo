@@ -11,6 +11,11 @@ demofolder = "demofiles"
 source = "" if os.name == "nt" else "source"
 
 
+def activate_path() -> str:
+    conda_path = which("conda")
+    return os.path.join(os.path.dirname(conda_path), os.path.pardir, "bin")
+
+
 def rmdir(dirname):
     """Safely remove a directory, cross-platform"""
     if not os.path.exists(dirname):
@@ -31,7 +36,11 @@ def environment(ctx, clean=False, env_name=env_name):
     """
     if clean:
         print("deleting environment")
-        ctx.run(f"{source!s} deactivate; mamba remove -n {env_name!s} --all")
+        path = os.environ.get("PATH")
+        ctx.run(
+            f"{source!s} deactivate; mamba remove -n {env_name!s} --all",
+            env={"PATH": f"{activate_path()}:{path}"},
+        )
     # Create a new environment
     print(f"creating environment {env_name!s}")
     ctx.run(
@@ -48,8 +57,10 @@ def build(ctx, env_name=env_name, kernel=True):
     """
 
     if kernel:
+        path = os.environ.get("PATH")
         ctx.run(
-            f"{source!s} activate {env_name!s} && ipython kernel install --name {env_name!s} --display-name {env_name!s} --sys-prefix"
+            f"{source!s} activate {env_name!s} && ipython kernel install --name {env_name!s} --display-name {env_name!s} --sys-prefix",
+            env={"PATH": f"{activate_path()}:{path}"},
         )
 
 
@@ -98,7 +109,8 @@ def clean(ctx, env_name=env_name, demofolder=demofolder):
     demofolder: path to folder with demofiles
     """
     cmd = f"{source!s} deactivate && mamba remove --name {env_name!s} --all"
-    ctx.run(cmd)
+    path = os.environ.get("PATH")
+    ctx.run(cmd, env={"PATH": f"{activate_path()}:{path}"})
 
     with open("talks.yml", "r") as stream:
         talks = safe_load(stream)
@@ -113,14 +125,11 @@ def r(ctx, env_name=env_name):
     """
     Installs the r kernel and associated libs.
     """
-    cmd_install = "mamba install -yc conda-forge -c nodefaults r-irkernel r-ggplot2"
-    # On CI the proper environment is already activated.
-    cmd = (
-        cmd_install
-        if os.getenv("CI")
-        else f"{source!s} activate {env_name!s} && {cmd_install}"
+    path = os.environ.get("PATH")
+    ctx.run(
+        f"{source!s} activate {env_name!s} && mamba install -yc conda-forge -c nodefaults r-irkernel r-ggplot2",
+        env={"PATH": f"{activate_path()}:{path}"},
     )
-    ctx.run(cmd)
 
 
 @task
