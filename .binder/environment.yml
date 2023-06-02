@@ -2,6 +2,10 @@ channels:
 - conda-forge
 - nodefaults
 dependencies:
+# !! you can only use single `=` to set a version. Otherwise it will break the update job
+- invoke=1.2
+- packaging
+- pyyaml
 # applications
 - jupyterlab=3.2
 - retrolab=0.3
@@ -28,9 +32,7 @@ dependencies:
 - seaborn=0.11
 - tensorflow=1.14
 - sympy=1.4
-- pyyaml
-- traittypes==0.2.1
-- invoke=1.2
+- traittypes=0.2.1
 # C++ Kernel
 - xeus-cling=0.10
 - xtensor=0.20.8

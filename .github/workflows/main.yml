@@ -38,7 +38,6 @@ jobs:
           conda config --show-sources
           conda config --show
           printenv | sort
-      - run: mamba install invoke pyyaml
       - run: |
           invoke r --env-name=jupyterlab-demo
           jupyter nbconvert --to notebook --execute  --ExecutePreprocessor.timeout=60 --stdout notebooks/Data.ipynb > /dev/null;

@@ -1,7 +1,11 @@
-from invoke import task, Collection
+import json
 import os
-from yaml import safe_load
+import re
+from pathlib import Path
 from subprocess import check_output
+from invoke import task, Collection
+from packaging.version import parse
+from yaml import safe_load
 
 from shutil import which
 import shutil
@@ -101,6 +105,55 @@ def demofiles(ctx, clean=False, demofolder=demofolder):
 
 
 @task
+def update(ctx, env_name=env_name):
+    """"""
+    result = ctx.run(f"mamba update -qn {env_name!s} --json --dry-run --all")
+    # clean the output
+    from_ = result.stdout.find("{")
+    to = result.stdout.rfind("}")
+    data = json.loads(result.stdout[from_:to+1])
+
+    if "error" in data:
+        print(data["error"])
+    elif "actions" in data:
+        links = data["actions"].get("LINK", [])
+        # Data structure in LINK
+        #   List of dictionary. Example:
+        # {
+        #     "base_url": null,
+        #     "build_number": 0,
+        #     "build_string": "mkl",
+        #     "channel": "defaults",
+        #     "dist_name": "blas-1.0-mkl",
+        #     "name": "blas",
+        #     "platform": null,
+        #     "version": "1.0"
+        # }
+
+        if links:
+            environment = Path(".binder/environment.yml")
+            raw_content = environment.read_text()
+            env_content = safe_load(raw_content)
+            dependencies = {}
+            for dep in env_content["dependencies"]:
+                if "=" in dep:
+                    package, version = dep.split("=", maxsplit=1)
+                    dependencies[package] = parse(version)
+            new_content = raw_content
+            has_update = False
+            for link in links:
+                name = link.get("name")
+                if name in dependencies:
+                    version = link["version"]
+                    if parse(version) > dependencies[name]:
+                        new_content = re.sub(f"- {name}={dependencies[name]!s}", f"- {name}={version}", new_content)
+                        has_update = True
+            
+            if has_update:
+                environment.write_text(new_content)
+
+
+@task
 def clean(ctx, env_name=env_name, demofolder=demofolder):
     """
     Deletes both environment and demofolder
@@ -196,7 +249,7 @@ def talk(ctx, talk_name, clean=False):
 
 
 # Configure cross-platform settings.
-ns = Collection(environment, build, demofiles, r, clean, talk)
+ns = Collection(environment, build, demofiles, r, clean, update, talk)
 ns.configure(
     {
         "run": {

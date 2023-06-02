@@ -1,0 +1,65 @@
+name: Check environment for updates
+
+on:
+  schedule:
+    - cron: "0 6 15 * *"
+  workflow_dispatch:
+
+defaults:
+  run:
+    shell: bash -el {0}
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Cache conda
+        uses: actions/cache@v3
+        env:
+          # Increase this value to reset cache if .binder/environment.yml has not changed
+          CACHE_NUMBER: 0
+        with:
+          path: ~/conda_pkgs_dir
+          key:
+            ${{ runner.os }}-conda-${{ env.CACHE_NUMBER }}-${{ hashFiles('.binder/environment.yml') }}
+      - uses: conda-incubator/setup-miniconda@v2
+        with:
+          mamba-version: "*"
+          channels: conda-forge,defaults
+          channel-priority: true
+          activate-environment: jupyterlab-demo
+          environment-file: .binder/environment.yml
+          use-only-tar-bz2: true # IMPORTANT: This needs to be set for caching to work properly!
+
+      - run: invoke update
+
+      - name: Create a PR optionally
+        shell: bash
+        env:
+          GITHUB_USER: ${{ secrets.GITHUB_USER }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -eux
+          if [[ ! -z "$(git status --porcelain .binder/environment.yml)" ]]; then
+            export SHA=$(git rev-parse --short HEAD)
+            export BRANCH_NAME=new-updates-${SHA}
+            git checkout -b "${BRANCH_NAME}"
+
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            # Needed for hub to create the pull request correctly
+            # Ref: https://github.com/github/hub/issues/1538 https://github.com/github/hub/pull/1705
+            git remote set-head origin --auto
+            
+            git add .binder/environment.yml
+            git commit -m "Update environment"
+            
+            git push --set-upstream origin "${BRANCH_NAME}"
+            hub pull-request -b "main" -m "New update available at ${SHA}"
+          fi
