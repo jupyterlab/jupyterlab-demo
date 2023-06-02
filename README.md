@@ -15,7 +15,7 @@ The demo requires `mamba`, available as part of [Mambaforge](https://github.com/
 
 To install the environment and demofiles, we use [pyinvoke](http://pyinvoke.org). To install pyinvoke with `mamba` call:
 ```bash
-mamba install -c conda-forge invoke pyyaml
+mamba install -c conda-forge invoke packaging pyyaml
 ```
 
 ### Create the environment
