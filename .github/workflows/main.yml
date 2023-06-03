@@ -45,4 +45,5 @@ jobs:
           jupyter nbconvert --to notebook --execute  --ExecutePreprocessor.timeout=60 --stdout notebooks/R.ipynb > /dev/null;
           invoke demofiles
           invoke talk -t demo
+          jupyter lab workspaces import .binder/workspace.json
           invoke clean
