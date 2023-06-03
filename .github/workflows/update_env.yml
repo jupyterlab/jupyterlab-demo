@@ -61,5 +61,5 @@ jobs:
             git commit -m "Update environment"
             
             git push --set-upstream origin "${BRANCH_NAME}"
-            hub pull-request -b "main" -m "New update available at ${SHA}"
+            hub pull-request -b "master" -m "New update available at ${SHA}"
           fi
