@@ -1,6 +1,6 @@
 # JupyterLab Demonstration
 
-[![Build Status](https://travis-ci.org/jupyterlab/jupyterlab-demo.svg?branch=master)](https://travis-ci.org/jupyterlab/jupyterlab-demo)
+[![Build Status](https://github.com/jupyterlab/jupyterlab-demo/actions/workflows/main.yml/badge.svg)](https://github.com/jupyterlab/jupyterlab-demo/actions/workflows/main.yml)
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/jupyterlab/jupyterlab-demo/master?urlpath=lab)
 
