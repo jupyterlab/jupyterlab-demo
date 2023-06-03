@@ -3,41 +3,41 @@ channels:
 - nodefaults
 dependencies:
 # !! you can only use single `=` to set a version. Otherwise it will break the update job
-- invoke=1.2
+- invoke=1.7.3
 - packaging
 - pyyaml
 # applications
-- jupyterlab=3.2
-- retrolab=0.3
-- nbconvert=6
+- jupyterlab=3.5.0
+- retrolab=0.3.21
+- nbconvert=7.2.5
 # extensions
 - jupyter-offlinenotebook=0.2
-- jupyterlab-fasta=3.1
-- jupyterlab-geojson=3.1
+- jupyterlab-fasta=3.2.0
+- jupyterlab-geojson=3.3.1
 - jupyterlab-link-share=0.2
 # Python Kernel
-- ipykernel=6.5
-- xeus-python=0.9
-- ipywidgets=7.6
-- widgetsnbextension=3.5
-- ipyleaflet=0.13
-- altair=4.1
-- bqplot=0.12.20
-- dask=2020.12
-- matplotlib-base=3.1
+- ipykernel=6.16.2
+- xeus-python=0.14.3
+- ipywidgets=8.0.2
+- widgetsnbextension=4.0.3
+- ipyleaflet=0.17.2
+- altair=4.2.0
+- bqplot=0.12.36
+- dask=2021.10.0
+- matplotlib-base=3.5.3
 - pandas=1
 - python=3.7
-- scikit-image=0.15
-- scikit-learn=0.21
-- seaborn=0.11
+- scikit-image=0.19.2
+- scikit-learn=1.0.2
+- seaborn=0.12.1
 - tensorflow=1.14
-- sympy=1.4
+- sympy=1.10.1
 - traittypes=0.2.1
 # C++ Kernel
-- xeus-cling=0.10
-- xtensor=0.20.8
-- xtensor-blas=0.16.1
-- xwidgets=0.24.2
-- xleaflet=0.13.1
+- xeus-cling=0.13.0
+- xtensor=0.23.10
+- xtensor-blas=0.19.2
+- xwidgets=0.26.1
+- xleaflet=0.16.0
 # CLI tools
 - vim
