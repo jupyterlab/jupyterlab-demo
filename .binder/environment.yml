@@ -26,11 +26,11 @@ dependencies:
 - dask=2021.10.0
 - matplotlib-base=3.5.3
 - pandas=1
-- python=3.7
+- python=3.9
 - scikit-image=0.19.2
 - scikit-learn=1.0.2
 - seaborn=0.12.1
-- tensorflow=1.14
+- tensorflow=2.11.0
 - sympy=1.10.1
 - traittypes=0.2.1
 # C++ Kernel
