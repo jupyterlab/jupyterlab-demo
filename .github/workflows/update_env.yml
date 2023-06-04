@@ -61,5 +61,5 @@ jobs:
             git commit -m "Update environment"
             
             git push --set-upstream origin "${BRANCH_NAME}"
-            hub pull-request -b "master" -m "New update available at ${SHA}"
+            hub pull-request -b "master" -m "New update available at ${SHA}" -m "[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/jupyterlab/jupyterlab-demo/${BRANCH_NAME}?urlpath=lab) :point_left: Launch a Binder on branch _${BRANCH_NAME}_"
           fi
