@@ -106,7 +106,7 @@ def demofiles(ctx, clean=False, demofolder=demofolder):
 
 @task
 def update(ctx, env_name=env_name):
-    """"""
+    """Check for conda environment update and modify the environment file"""
     result = ctx.run(f"mamba update -qn {env_name!s} --json --dry-run --all")
     # clean the output
     from_ = result.stdout.find("{")
