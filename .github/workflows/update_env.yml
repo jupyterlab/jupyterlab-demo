@@ -37,7 +37,11 @@ jobs:
           environment-file: .binder/environment.yml
           use-only-tar-bz2: true # IMPORTANT: This needs to be set for caching to work properly!
 
-      - run: invoke update
+      - run: |
+          # First invoke r task as it changes the environment
+          invoke r --env-name=jupyterlab-demo
+          # Check for updates in the final environment with r installed
+          invoke update
 
       - name: Create a PR optionally
         shell: bash
