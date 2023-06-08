@@ -12,5 +12,4 @@ rm demo/notebooks/Julia.ipynb
 # Setup a workspace
 # - activate the environment otherwise the workspace is imported
 #   in the user home folder rather than in the prefix path (new default)
-conda activate notebook
-jupyter lab workspaces import .binder/workspace.json
+conda run -n notebook jupyter lab workspaces import .binder/workspace.json
