@@ -32,6 +32,7 @@ jobs:
           channel-priority: "strict"
           activate-environment: jupyterlab-demo
           environment-file: .binder/environment.yml
+          # The following option is blocking the environment resolution (newer versions are not found)
           # use-only-tar-bz2: true # IMPORTANT: This needs to be set for caching to work properly!
       - run: |
           conda info
