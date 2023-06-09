@@ -26,7 +26,7 @@ jobs:
             ${{ runner.os }}-conda-${{ env.CACHE_NUMBER }}-${{ hashFiles('.binder/environment.yml') }}
       - uses: conda-incubator/setup-miniconda@v2
         with:
-          mamba-version: ">=1.4.2"
+          mamba-version: ">=1.4.0"
           # Defaults is added automatically
           channels: conda-forge
           channel-priority: "strict"
