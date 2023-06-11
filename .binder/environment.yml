@@ -33,9 +33,6 @@ dependencies:
 - tensorflow=2.11.0
 - sympy=1.12
 - traittypes=0.2.1
-# R kernel
-# - r-irkernel
-# - r-ggplot2
 # C++ Kernel
 - xeus-cling=0.13.0
 - xtensor=0.23.10
