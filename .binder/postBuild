@@ -1,6 +1,6 @@
 set -ex
 
-invoke r --env-name=notebook
+# invoke r --env-name=notebook
 invoke demofiles
 invoke talk -t demo
 rm -rf demofiles

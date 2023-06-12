@@ -61,10 +61,8 @@ def build(ctx, env_name=env_name, kernel=True):
     """
 
     if kernel:
-        path = os.environ.get("PATH")
         ctx.run(
-            f"{source!s} activate {env_name!s} && ipython kernel install --name {env_name!s} --display-name {env_name!s} --sys-prefix",
-            env={"PATH": f"{activate_path()}:{path}"},
+            f"conda run -n {env_name!s} ipython kernel install --name {env_name!s} --display-name {env_name!s} --sys-prefix"
         )
 
 
@@ -178,10 +176,8 @@ def r(ctx, env_name=env_name):
     """
     Installs the r kernel and associated libs.
     """
-    path = os.environ.get("PATH")
     ctx.run(
-        f"{source!s} activate {env_name!s} && mamba install -yc conda-forge -c nodefaults r-irkernel r-ggplot2",
-        env={"PATH": f"{activate_path()}:{path}"},
+        f"mamba install -yn {env_name!s} -c conda-forge -c nodefaults r-irkernel r-ggplot2",
     )
 
 
