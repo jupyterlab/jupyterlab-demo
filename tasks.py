@@ -85,9 +85,9 @@ def demofiles(ctx, clean=False, demofolder=demofolder):
         "bloomberg/bqplot",
     ]
     for repo in reponames:
-        if not Path(repo.split("/")[1]).isdir():
+        if not Path(repo.split("/")[1]).is_dir():
             ctx.run(f"git clone --depth 1 https://github.com/{repo!s}.git")
-        assert Path(repo.split("/")[1]).isdir(), f"{repo!s} failed download"
+        assert Path(repo.split("/")[1]).is_dir(), f"{repo!s} failed download"
     # This empty file and empty folder are for showing drag and drop in jupyterlab
     (demo_folder / "move_this_file.txt").touch()
     (demo_folder / "move_it_here").mkdir(exist_ok=True)
