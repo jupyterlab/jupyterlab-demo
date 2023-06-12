@@ -177,7 +177,7 @@ def r(ctx, env_name=env_name):
     Installs the r kernel and associated libs.
     """
     ctx.run(
-        f"mamba install -yn {env_name!s} -c conda-forge r-irkernel r-ggplot2",
+        f"mamba install -yn {env_name!s} -c conda-forge -c nodefaults r-irkernel r-ggplot2",
     )
 
 
