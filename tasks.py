@@ -1,14 +1,14 @@
 import json
 import os
 import re
+import shutil
 from pathlib import Path
 from subprocess import check_output
+
 from invoke import task, Collection
 from packaging.version import parse
 from yaml import safe_load
 
-from shutil import which
-import shutil
 
 env_name = "jupyterlab-demo"
 demofolder = "demofiles"
@@ -16,18 +16,8 @@ source = "" if os.name == "nt" else "source"
 
 
 def activate_path() -> str:
-    conda_path = which("conda")
-    return os.path.join(os.path.dirname(conda_path), os.path.pardir, "bin")
-
-
-def rmdir(dirname):
-    """Safely remove a directory, cross-platform"""
-    if not os.path.exists(dirname):
-        return
-    if os.name == "nt":
-        check_output("rmdir {0!s} /S /Q".format(dirname), shell=True)
-    else:
-        check_output(["rm", "-rf", dirname])
+    conda_path = Path(shutil.which("conda"))
+    return conda_path.parent / os.path.pardir / "bin"
 
 
 @task
@@ -76,15 +66,15 @@ def demofiles(ctx, clean=False, demofolder=demofolder):
     """
     print("cleaning demofiles")
     if clean:
-        rmdir(demofolder)
+        shutil.rmtree(demofolder, ignore_errors=True)
 
     print("creating demofolder")
-    if not os.path.exists(demofolder):
-        os.makedirs(demofolder)
-    os.chdir(demofolder)
+    demo_folder = Path(demofolder)
+    demo_folder.mkdir(parents=True, exist_ok=True)
+    os.chdir(f"{demo_folder!s}")
 
     # list of repos used in demo
-    print(f"cloning repos into demo folder {demofolder}")
+    print(f"cloning repos into demo folder {demo_folder!s}")
     reponames = [
         "jakevdp/PythonDataScienceHandbook",
         "swissnexSF/Urban-Data-Challenge",
@@ -95,11 +85,12 @@ def demofiles(ctx, clean=False, demofolder=demofolder):
         "bloomberg/bqplot",
     ]
     for repo in reponames:
-        if not os.path.isdir(repo.split("/")[1]):
+        if not Path(repo.split("/")[1]).is_dir():
             ctx.run(f"git clone --depth 1 https://github.com/{repo!s}.git")
-        assert os.path.isdir(repo.split("/")[1]), f"{repo!s} failed download"
+        assert Path(repo.split("/")[1]).is_dir(), f"{repo!s} failed download"
     # This empty file and empty folder are for showing drag and drop in jupyterlab
-    ctx.run("touch move_this_file.txt; mkdir move_it_here")
+    Path("move_this_file.txt").touch()
+    Path("move_it_here").mkdir(exist_ok=True)
 
 
 @task
@@ -166,9 +157,9 @@ def clean(ctx, env_name=env_name, demofolder=demofolder):
     with open("talks.yml", "r") as stream:
         talks = safe_load(stream)
     for t in talks:
-        rmdir(t)
+        shutil.rmtree(t, ignore_errors=True)
 
-    rmdir(demofolder)
+    shutil.rmtree(demofolder, ignore_errors=True)
 
 
 @task
@@ -216,9 +207,8 @@ def talk(ctx, talk_name, clean=False):
     with open("talks.yml", "r") as stream:
         talks = safe_load(stream)
     if clean:
-        rmdir(talk_name)
-    if not os.path.exists(talk_name):
-        os.makedirs(talk_name)
+        shutil.rmtree(talk_name, ignore_errors=True)
+    Path(talk_name).mkdir(parents=True, exist_ok=True)
 
     if "files" in talks[talk_name]:
         for f in talks[talk_name]["files"]:
@@ -249,7 +239,7 @@ ns = Collection(environment, build, demofiles, r, clean, update, talk)
 ns.configure(
     {
         "run": {
-            "shell": which("bash") if os.name != "nt" else which("cmd"),
+            "shell": shutil.which("bash") if os.name != "nt" else shutil.which("cmd"),
             "pty": False if os.name == "nt" else True,
         }
     }
