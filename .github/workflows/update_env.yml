@@ -30,16 +30,18 @@ jobs:
             ${{ runner.os }}-conda-${{ env.CACHE_NUMBER }}-${{ hashFiles('.binder/environment.yml') }}
       - uses: conda-incubator/setup-miniconda@v2
         with:
-          mamba-version: "*"
-          channels: conda-forge,defaults
-          channel-priority: true
+          mamba-version: ">=1.4.0"
+          # Defaults is added automatically
+          channels: conda-forge
+          channel-priority: "strict"
           activate-environment: jupyterlab-demo
           environment-file: .binder/environment.yml
-          use-only-tar-bz2: true # IMPORTANT: This needs to be set for caching to work properly!
+          # The following option is blocking the environment resolution (newer versions are not found)
+          # use-only-tar-bz2: true # IMPORTANT: This needs to be set for caching to work properly!
 
       - run: |
-          # First invoke r task as it changes the environment
-          invoke r --env-name=jupyterlab-demo
+          # FIXME First invoke r task as it changes the environment
+          # invoke r --env-name=jupyterlab-demo
           # Check for updates in the final environment with r installed
           invoke update
 
