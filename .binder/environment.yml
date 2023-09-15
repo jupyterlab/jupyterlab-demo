@@ -10,15 +10,14 @@ dependencies:
 - jupyterlab=4.0.3
 - jupyter-collaboration=1.0.1
 - nbconvert=7.6.0
-- pip:
-  - notebook==7.0.0b3
+- notebook==7.0.3
 # extensions
 - jupyter-offlinenotebook=0.2.2
 - jupyterlab-fasta=3.3
 - jupyterlab-geojson=3.4
 # Python Kernel
 - ipykernel=6.24.0
-- xeus-python=0.14.3
+- xeus-python=0.15.9
 - ipywidgets=8
 - ipyleaflet=0.17.3
 - altair=5.0.1
