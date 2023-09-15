@@ -36,7 +36,7 @@ dependencies:
 - xeus-cling=0.13.0
 - xtensor=0.23.10
 - xtensor-blas=0.19.2
-- xwidgets=0.26.1
+- xwidgets=0.28.0
 - xleaflet=0.16.0
 # CLI tools
 - pip
