@@ -15,30 +15,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Cache conda
-        uses: actions/cache@v3
-        env:
-          # Increase this value to reset cache if .binder/environment.yml has not changed
-          CACHE_NUMBER: 0
+      - name: Install mamba
+        uses: mamba-org/setup-micromamba@v1
         with:
-          path: ~/conda_pkgs_dir
-          key:
-            ${{ runner.os }}-conda-${{ env.CACHE_NUMBER }}-${{ hashFiles('.binder/environment.yml') }}
-      - uses: conda-incubator/setup-miniconda@v2
-        with:
-          mamba-version: ">=1.4.0"
-          # Defaults is added automatically
-          channels: conda-forge
-          channel-priority: "strict"
-          activate-environment: jupyterlab-demo
+          micromamba-version: '1.5.1-0'
           environment-file: .binder/environment.yml
-          # The following option is blocking the environment resolution (newer versions are not found)
-          # use-only-tar-bz2: true # IMPORTANT: This needs to be set for caching to work properly!
+          environment-name: jupyterlab-demo
+          cache-environment: true
       - run: |
-          conda info
-          conda list
-          conda config --show-sources
-          conda config --show
+          mamba info
+          mamba list
+          mamba config sources
+          conda config list
           printenv | sort
       - run: |
           invoke r --env-name=jupyterlab-demo
