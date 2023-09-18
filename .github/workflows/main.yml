@@ -23,10 +23,10 @@ jobs:
           environment-name: jupyterlab-demo
           cache-environment: true
       - run: |
-          mamba info
-          mamba list
-          mamba config sources
-          conda config list
+          micromamba info
+          micromamba list
+          micromamba config sources
+          micromamba config list
           printenv | sort
       - run: |
           invoke r --env-name=jupyterlab-demo
