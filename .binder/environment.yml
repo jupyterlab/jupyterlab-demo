@@ -4,6 +4,7 @@ channels:
 dependencies:
 # !! you can only use single `=` to set a version. Otherwise it will break the update job
 - invoke=2.2.0
+- mamba
 - packaging
 - pyyaml
 # applications
