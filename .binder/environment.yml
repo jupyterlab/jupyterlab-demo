@@ -10,8 +10,7 @@ dependencies:
 - jupyterlab=4.0.3
 - jupyter-collaboration=1.0.1
 - nbconvert=7.6.0
-- pip:
-  - notebook==7.0.0b3
+- notebook==7.0.3
 # extensions
 - jupyter-offlinenotebook=0.2.2
 - jupyterlab-fasta=3.3
