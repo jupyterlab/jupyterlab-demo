@@ -7,11 +7,10 @@ dependencies:
 - packaging
 - pyyaml
 # applications
-- jupyterlab=4.0.3
+- jupyterlab=4.0.6
 - jupyter-collaboration=1.0.1
 - nbconvert=7.6.0
-- pip:
-  - notebook==7.0.0b3
+- notebook==7.0.4
 # extensions
 - jupyter-offlinenotebook=0.2.2
 - jupyterlab-fasta=3.3
