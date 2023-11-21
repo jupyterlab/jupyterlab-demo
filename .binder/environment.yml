@@ -7,7 +7,7 @@ dependencies:
 - packaging
 - pyyaml
 # applications
-- jupyterlab=4.0.6
+- jupyterlab=4.0.9
 - jupyter-collaboration=1.0.1
 - nbconvert=7.6.0
 - notebook=7.0.6
