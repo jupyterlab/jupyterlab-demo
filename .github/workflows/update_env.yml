@@ -59,13 +59,10 @@ jobs:
 
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-            # Needed for hub to create the pull request correctly
-            # Ref: https://github.com/github/hub/issues/1538 https://github.com/github/hub/pull/1705
-            git remote set-head origin --auto
             
             git add .binder/environment.yml
             git commit -m "Update environment"
             
             git push --set-upstream origin "${BRANCH_NAME}"
-            hub pull-request -b "master" -m "New update available at ${SHA}" -m "[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/jupyterlab/jupyterlab-demo/${BRANCH_NAME}?urlpath=lab) :point_left: Launch a Binder on branch _${BRANCH_NAME}_"
+            gh pr create -B "master" -t "New update available at ${SHA}" -b "[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/jupyterlab/jupyterlab-demo/${BRANCH_NAME}?urlpath=lab) :point_left: Launch a Binder on branch _${BRANCH_NAME}_"
           fi
