@@ -2,21 +2,20 @@ channels:
 - conda-forge
 - nodefaults
 dependencies:
-# !! you can only use single `=` to set a version. Otherwise it will break the update job
 - invoke
-- packaging
+# - packaging
 - pyyaml
 # applications
-- jupyterlab
+# - jupyterlab
 - jupyter-collaboration
-- nbconvert
+# - nbconvert
 - notebook
 # extensions
-- jupyter-offlinenotebook
-- jupyterlab-fasta
+# - jupyter-offlinenotebook
+# - jupyterlab-fasta
 - jupyterlab-geojson
 # Python Kernel
-- ipykernel
+# - ipykernel
 - xeus-python
 - ipywidgets
 - ipyleaflet
