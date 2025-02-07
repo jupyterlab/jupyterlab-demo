@@ -3,19 +3,13 @@ channels:
 - nodefaults
 dependencies:
 - invoke
-# - packaging
-- pyyaml
 # applications
-# - jupyterlab
 - jupyter-collaboration
-# - nbconvert
-- notebook
-# extensions
-# - jupyter-offlinenotebook
-# - jupyterlab-fasta
+# # extensions
+- jupyter-offlinenotebook
+- jupyterlab-fasta
 - jupyterlab-geojson
-# Python Kernel
-# - ipykernel
+# # Python Kernel
 - xeus-python
 - ipywidgets
 - ipyleaflet
@@ -24,18 +18,16 @@ dependencies:
 - dask
 - matplotlib-base
 - pandas
-- python=3.11
 - scikit-image
 - scikit-learn
 - seaborn-base
-- tensorflow
 - sympy
 - traittypes
 # C++ Kernel
-#- xeus-cling
-#- xtensor
-#- xtensor-blas
-#- xwidgets
+- xeus-cling
+- xtensor
+- xtensor-blas
+- xwidgets
 - xleaflet
 # CLI tools
 - pip
