@@ -24,11 +24,11 @@ dependencies:
 - sympy
 - traittypes
 # C++ Kernel
-- xeus-cling
-- xtensor
-- xtensor-blas
-- xwidgets
-- xleaflet
+# - xeus-cling
+# - xtensor
+# - xtensor-blas
+# - xwidgets
+# - xleaflet
 # CLI tools
 - pip
 - vim
