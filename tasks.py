@@ -32,7 +32,7 @@ def environment(ctx, clean=False, env_name=env_name):
         print("deleting environment")
         path = os.environ.get("PATH")
         ctx.run(
-            f"{source!s} deactivate; mamba remove -n {env_name!s} --all",
+            f"mamba remove -n {env_name!s} --all",
             env={"PATH": f"{activate_path()}:{path}"},
         )
     # Create a new environment
