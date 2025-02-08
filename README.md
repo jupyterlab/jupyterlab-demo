@@ -13,84 +13,15 @@ generation user interface of Project Jupyter.
 The demo requires `mamba`, available as part of [Mambaforge](https://github.com/conda-forge/miniforge) and the package
  requirements are described in `environment.yml`
 
-To install the environment and demofiles, we use [pyinvoke](http://pyinvoke.org). To install pyinvoke with `mamba` call:
-```bash
-mamba install -c conda-forge invoke packaging pyyaml
-```
-
-### Create the environment
-
-To create the conda environment with all the dependencies and jupyterlab extensions for the demo, run:
-
-```bash
-invoke environment  # optionally --env-name=my-env-name
-```
-
-The default environment name is `jupyterlab-demo`.
-
-To create the environment and remove previous installation, call:
-
-```bash
-invoke environment --clean
-```
-
-### Activate/deactivate the environment
-
-To activate the conda environment, run:
-
-```bash
-source activate jupyterlab-demo
-```
-
-To deactivate the conda environment, run:
-
-```bash
-source deactivate
-```
-
-### Additional demo files
-
-The demo includes files from a number of other repositories. To install these files,
-run:
-
-```bash
-invoke demofiles
-```
-
-To remove demofiles and download again all:
-```
-invoke demofiles --clean
-```
-
-### R Language support
-
-To add R language support, run:
-
-```bash
-invoke r
-```
-
-### Julia Language support
-
-To add Julia language support follow the instructions [here](https://github.com/JuliaLang/IJulia.jl#installation).
-
-
-### Uninstalling
-
-To uninstall the demofiles and enviornment, call:
-
-```
-invoke clean
-```
+TODO: More installation instructions
 
 # Demo guide
 
 The basic outline of the JupyterLab demo is described in the file `jupyterlab.md`.
 
-
 # External Repositories
 
-Our `invoke demofiles` clones repos from other authors.  The details of these repos are as follows:
+Our `build.py` clones repos from other authors.  The details of these repos are as follows:
 
 | Name  | Author |License |
 |---|---|---|

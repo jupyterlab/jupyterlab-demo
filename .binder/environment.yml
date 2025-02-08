@@ -2,10 +2,6 @@ channels:
 - conda-forge
 - nodefaults
 dependencies:
-- invoke
-- mamba
-- packaging
-- pyyaml
 # applications
 - jupyterlab
 - jupyter-collaboration

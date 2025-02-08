@@ -29,12 +29,7 @@ jobs:
           micromamba config list
           printenv | sort
       - run: |
-          invoke r --env-name=jupyterlab-demo
           jupyter nbconvert --to notebook --execute  --ExecutePreprocessor.timeout=60 --stdout notebooks/Data.ipynb > /dev/null;
           jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=60 --stdout notebooks/Fasta.ipynb > /dev/null;
           jupyter nbconvert --to notebook --execute  --ExecutePreprocessor.timeout=60 --stdout notebooks/R.ipynb > /dev/null;
-          invoke demofiles
-          invoke talk -t demo
-          jupyter lab workspaces import .binder/workspace.json
-          python -m jupyterlab.browser_check
-          invoke clean
+          python build.py
