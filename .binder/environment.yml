@@ -2,8 +2,8 @@ channels:
 - conda-forge
 - nodefaults
 dependencies:
-# !! you can only use single `=` to set a version. Otherwise it will break the update job
 - invoke
+- mamba
 - packaging
 - pyyaml
 # applications
