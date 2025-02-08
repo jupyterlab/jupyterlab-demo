@@ -11,6 +11,9 @@ dependencies:
 - jupyter-offlinenotebook
 - jupyterlab-fasta
 - jupyterlab-geojson
+# R kernel
+- r-irkernel
+- r-ggplot2
 # Python Kernel
 - ipykernel
 - xeus-python
