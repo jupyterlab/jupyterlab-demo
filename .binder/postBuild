@@ -1,8 +1,7 @@
 set -ex
 
-# invoke r --env-name=notebook
-invoke demofiles
-invoke talk -t demo
+python build.py
+
 rm -rf demofiles
 rm -rf notebooks
 rm -rf narrative

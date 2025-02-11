@@ -15,38 +15,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Cache conda
-        uses: actions/cache@v3
-        env:
-          # Increase this value to reset cache if .binder/environment.yml has not changed
-          CACHE_NUMBER: 0
+      - name: Install mamba
+        uses: mamba-org/setup-micromamba@v1
         with:
-          path: ~/conda_pkgs_dir
-          key:
-            ${{ runner.os }}-conda-${{ env.CACHE_NUMBER }}-${{ hashFiles('.binder/environment.yml') }}
-      - uses: conda-incubator/setup-miniconda@v2
-        with:
-          mamba-version: ">=1.4.0"
-          # Defaults is added automatically
-          channels: conda-forge
-          channel-priority: "strict"
-          activate-environment: jupyterlab-demo
+          micromamba-version: '1.5.1-0'
           environment-file: .binder/environment.yml
-          # The following option is blocking the environment resolution (newer versions are not found)
-          # use-only-tar-bz2: true # IMPORTANT: This needs to be set for caching to work properly!
+          environment-name: jupyterlab-demo
+          cache-environment: true
       - run: |
-          conda info
-          conda list
-          conda config --show-sources
-          conda config --show
+          micromamba info
+          micromamba list
+          micromamba config sources
+          micromamba config list
           printenv | sort
       - run: |
-          invoke r --env-name=jupyterlab-demo
           jupyter nbconvert --to notebook --execute  --ExecutePreprocessor.timeout=60 --stdout notebooks/Data.ipynb > /dev/null;
           jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=60 --stdout notebooks/Fasta.ipynb > /dev/null;
           jupyter nbconvert --to notebook --execute  --ExecutePreprocessor.timeout=60 --stdout notebooks/R.ipynb > /dev/null;
-          invoke demofiles
-          invoke talk -t demo
-          jupyter lab workspaces import .binder/workspace.json
-          python -m jupyterlab.browser_check
-          invoke clean
+          python build.py
