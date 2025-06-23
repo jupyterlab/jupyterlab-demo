@@ -32,3 +32,6 @@ Our `build.py` clones repos from other authors.  The details of these repos are 
 | QuantEcon.notebooks   |  QuantEcon | [BSD 3-clause "New" or "Revised" License](https://github.com/QuantEcon/QuantEcon.notebooks/blob/master/LICENSE) |
 | TCGA   |  Gross et. al. | None Listed | None Listed |
 | TensorFlow-Examples   |  Aymeric Damien | [MIT](https://github.com/aymericdamien/TensorFlow-Examples/blob/master/LICENSE) |
+
+This repository also contains media files part of the Public Domain Archive: https://archive.org/details/public-domain-archive,
+licensed under CC0 1.0 Universal: https://creativecommons.org/publicdomain/zero/1.0/
