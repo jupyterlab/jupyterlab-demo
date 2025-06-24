@@ -33,5 +33,5 @@ Our `build.py` clones repos from other authors.  The details of these repos are 
 | TCGA   |  Gross et. al. | None Listed | None Listed |
 | TensorFlow-Examples   |  Aymeric Damien | [MIT](https://github.com/aymericdamien/TensorFlow-Examples/blob/master/LICENSE) |
 
-This repository also contains media files part of the Public Domain Archive: https://archive.org/details/public-domain-archive,
+This repository also contains media files (`jupiter.mp4` and `rocket.wav`) part of the Public Domain Archive: https://archive.org/details/public-domain-archive,
 licensed under CC0 1.0 Universal: https://creativecommons.org/publicdomain/zero/1.0/
